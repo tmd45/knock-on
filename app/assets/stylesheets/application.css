@@ -12,5 +12,6 @@
  *
  *= require_tree .
  *= require bootstrap.min
+ *= require bootstrap-material-design/dist/css/material
  *= require_self
  */
