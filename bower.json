@@ -1,0 +1,21 @@
+{
+  "name": "knock-on",
+  "description": "",
+  "main": "",
+  "license": "",
+  "homepage": "https://github.com/tmd45/knock-on",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "vendor/assets/bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {},
+  "devDependencies": {
+    "bootstrap-material-design": "~0.3.0",
+    "bootstrap": "~3.3.5"
+  }
+}
