@@ -64,7 +64,7 @@ fi
 
 
 echo "  + Install ruby gems"
-bundle install --path vendor/bundle --binstubs vendor/bundle/bin --jobs=2 --retry=3 --quiet
+bundle install --path vendor/bundle --binstubs vendor/bundle/bin --without production --jobs=2 --retry=3 --quiet
 
 echo "  + Install bower components"
 bower install
