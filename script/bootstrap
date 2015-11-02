@@ -1,0 +1,65 @@
+#!/bin/sh -e
+
+#
+# Check for Bundle
+#
+if [ ! $(which bundle) ]; then
+  echo "  x You need to install Bundler:"
+  echo "    gem install bundler"
+else
+  echo "  + Bundler found."
+fi
+
+#
+# Check for Npm
+#
+if [ ! $(which npm) ]; then
+  echo "  x You need to install Node/Npm:"
+  echo "    nodebrew install v0.12.x"
+else
+  echo "  + Npm found."
+fi
+
+#
+# Check for Bower
+#
+if [ ! $(which bower) ]; then
+  echo "  x You need to install Bower:"
+  echo "    npm install -g bower"
+else
+  echo "  + Bower found."
+fi
+
+#
+# Check for .bowerrc
+#
+if ! grep -q -e '{"directory":"vendor/assets/bower_components"}' .bowerrc; then
+  echo "  x You need to add .bowerrc"
+  echo "    echo '{\"directory\":\"vendor/assets/bower_components\"}' > .bowerrc"
+else
+  echo "  + .bowerrc found."
+fi
+
+#
+# Check for PostgreSQL
+#
+if ! psql -l; then
+  echo "  x You need to setup PostgreSQL"
+  echo "    brew install postgresql93"
+  echo "    or/ brew info postgresql93"
+else
+  echo "  + PostgreSQL found."
+fi
+
+
+echo "  + Install ruby gems"
+bundle install --path vendor/bundle --binstubs vendor/bundle/bin --jobs=2 --retry=3
+
+echo "  + Install bower components"
+bower install
+
+echo "  + Create PostgreSQL databases"
+if ! psql -l | fgrep -q knock_on_development; then
+  ./bin/bundle exec rake db:create
+fi
+# ./bin/bundle exec rake db:reset
