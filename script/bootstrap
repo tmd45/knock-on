@@ -43,7 +43,7 @@ fi
 #
 # Check for PostgreSQL
 #
-if ! psql -l; then
+if ! psql -l | fgrep -q postgres; then
   echo "  x You need to setup PostgreSQL"
   echo "    brew install postgresql93"
   echo "    or/ brew info postgresql93"
@@ -51,9 +51,20 @@ else
   echo "  + PostgreSQL found."
 fi
 
+#
+# Check for config/secrets.yml
+#
+if [ ! -f ./config/secrets.yml ]; then
+  echo "  x You need to add config/secrets.yml"
+  echo "    ./bin/rake secret"
+  echo "    vi config/secrets.yml"
+else
+  echo "  + config/secrets.yml found."
+fi
+
 
 echo "  + Install ruby gems"
-bundle install --path vendor/bundle --binstubs vendor/bundle/bin --jobs=2 --retry=3
+bundle install --path vendor/bundle --binstubs vendor/bundle/bin --jobs=2 --retry=3 --quiet
 
 echo "  + Install bower components"
 bower install
