@@ -11,5 +11,7 @@
  * file per style scope.
  *
  *= require_tree .
+ *= require bootstrap/dist/css/bootstrap
+ *= require bootstrap-material-design/dist/css/material
  *= require_self
  */
