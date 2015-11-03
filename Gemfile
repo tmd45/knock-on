@@ -36,6 +36,8 @@ gem 'puma'
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
+gem 'dotenv-rails'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
@@ -68,5 +70,6 @@ group :development do
 end
 
 group :production do
+  # To use Heroku for preview
   gem 'rails_12factor'
 end

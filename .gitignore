@@ -26,3 +26,6 @@ pickle-email-*.html
 
 # Ignore pow environment settings
 .powenv
+
+# Use dotenv
+.env
