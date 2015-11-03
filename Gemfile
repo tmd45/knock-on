@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 ruby "2.2.3"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '4.2.4'
+gem 'rails', '~> 4.2.4'
 # Use PostgreSQL as the database for Active Record
 gem 'pg', '~> 0.18.3'
 # Use SCSS for stylesheets
@@ -34,12 +34,12 @@ end
 
 # Use Unicorn as the app server
 # gem 'unicorn'
-gem 'puma'
+gem 'puma', '~> 2.14.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
 
-gem 'dotenv-rails'
+gem 'dotenv-rails', '~> 2.0.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
@@ -74,5 +74,5 @@ end
 
 group :production do
   # To use Heroku for preview
-  gem 'rails_12factor'
+  gem 'rails_12factor', '~> 0.0.3'
 end
