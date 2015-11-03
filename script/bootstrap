@@ -31,16 +31,6 @@ else
 fi
 
 #
-# Check for .bowerrc
-#
-if ! grep -q -e '{"directory":"vendor/assets/bower_components"}' .bowerrc; then
-  echo "  x You need to add .bowerrc"
-  echo "    echo '{\"directory\":\"vendor/assets/bower_components\"}' > .bowerrc"
-else
-  echo "  + .bowerrc found."
-fi
-
-#
 # Check for PostgreSQL
 #
 if ! psql -l | fgrep -q postgres; then
