@@ -70,5 +70,6 @@ group :development do
 end
 
 group :production do
+  # To use Heroku for preview
   gem 'rails_12factor'
 end
