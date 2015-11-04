@@ -43,6 +43,7 @@ group :development, :test do
   gem 'byebug'
 
   gem 'pry-rails'
+  gem 'pry-doc'
   gem 'pry-byebug'
   gem 'hirb'
   gem 'hirb-unicode'
