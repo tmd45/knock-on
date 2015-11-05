@@ -16,7 +16,7 @@ class CreateMembers < ActiveRecord::Migration
       t.timestamps null: false
     end
 
-    add_index :members, [ :provider, :uid ], unique: true, name: :index_provider_uid
-    add_index :members, :email, unique: true, name: :index_email
+    add_index :members, [ :provider, :uid ], unique: true, name: :idx_members_provider_uid
+    add_index :members, :email, unique: true, name: :idx_members_email
   end
 end

@@ -32,7 +32,7 @@ ActiveRecord::Schema.define(version: 20151103141459) do
     t.datetime "updated_at",           null: false
   end
 
-  add_index "members", ["email"], name: "index_email", unique: true, using: :btree
-  add_index "members", ["provider", "uid"], name: "index_provider_uid", unique: true, using: :btree
+  add_index "members", ["email"], name: "idx_members_email", unique: true, using: :btree
+  add_index "members", ["provider", "uid"], name: "idx_members_provider_uid", unique: true, using: :btree
 
 end
