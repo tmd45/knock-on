@@ -1,0 +1,5 @@
+ja:
+  omniauth:
+    sessions:
+      signed_in: ログインしました
+      signed_out: ログアウトしました
