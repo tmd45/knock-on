@@ -1,5 +1,13 @@
 <% if logged_in? %>
-  <p><%= link_to 'ログイン中です', logout_path, class: 'btn btn-default' %></p>
+  <p>
+  <%= link_to logout_path, class: 'btn btn-default' do %>
+    <i class="mdi-action-account-circle"></i> ログイン中です
+  <% end %>
+  </p>
 <% else %>
-  <p><%= link_to 'Google でログイン', '/auth/google', class: 'btn btn-primary' %></p>
+  <p>
+  <%= link_to '/auth/google', class: 'btn btn-primary' do %>
+    <i class="mdi-content-add-circle-outline"></i> Google でログイン
+  <% end %>
+  </p>
 <% end %>
