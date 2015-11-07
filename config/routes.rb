@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'members/index'
+
   root to: 'welcome#index'
 
   get '/auth/:provider/callback' => 'sessions#create'
