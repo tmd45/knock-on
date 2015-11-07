@@ -1,23 +1,22 @@
 @font-face {
   font-family: 'Glyphicons Halflings';
-  src: font-url('glyphicons-halflings-regular.eot');
-  src: font-url('glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
-       font-url('glyphicons-halflings-regular.woff2') format('woff2'),
-       font-url('glyphicons-halflings-regular.woff') format('woff'),
-       font-url('glyphicons-halflings-regular.ttf') format('truetype'),
-       font-url('glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
+  src: asset-url('bootstrap/fonts/glyphicons-halflings-regular.eot');
+  src: asset-url('bootstrap/fonts/glyphicons-halflings-regular.eot?#iefix') format('embedded-opentype'),
+       asset-url('bootstrap/fonts/glyphicons-halflings-regular.woff2') format('woff2'),
+       asset-url('bootstrap/fonts/glyphicons-halflings-regular.woff') format('woff'),
+       asset-url('bootstrap/fonts/glyphicons-halflings-regular.ttf') format('truetype'),
+       asset-url('bootstrap/fonts/glyphicons-halflings-regular.svg#glyphicons_halflingsregular') format('svg');
 }
 @font-face {
     font-family: 'Material-Design-Icons';
-    src: font-url('Material-Design-Icons.eot?3ocs8m');
-    src: font-url('Material-Design-Icons.eot?#iefix3ocs8m') format('embedded-opentype'),
-         font-url('Material-Design-Icons.woff?3ocs8m') format('woff'),
-         font-url('Material-Design-Icons.ttf?3ocs8m') format('truetype'),
-         font-url('Material-Design-Icons.svg?3ocs8m#Material-Design-Icons') format('svg');
+    src: asset-url('bootstrap-material-design/fonts/Material-Design-Icons.eot?3ocs8m');
+    src: asset-url('bootstrap-material-design/fonts/Material-Design-Icons.eot?#iefix3ocs8m') format('embedded-opentype'),
+         asset-url('bootstrap-material-design/fonts/Material-Design-Icons.woff?3ocs8m') format('woff'),
+         asset-url('bootstrap-material-design/fonts/Material-Design-Icons.ttf?3ocs8m') format('truetype'),
+         asset-url('bootstrap-material-design/fonts/Material-Design-Icons.svg?3ocs8m#Material-Design-Icons') format('svg');
     font-weight: normal;
     font-style: normal;
 }
-
 @font-face {
   font-family: 'RobotoDraft';
   font-style: normal;
@@ -26,10 +25,9 @@
   src: local('RobotoDraft'),
        local('RobotoDraft-Regular'),
        local('Roboto-Regular'),
-       font-url('RobotoDraftRegular.woff2') format('woff2'),
-       font-url('RobotoDraftRegular.woff') format('woff');
+       asset-url('bootstrap-material-design/fonts/RobotoDraftRegular.woff2') format('woff2'),
+       asset-url('bootstrap-material-design/fonts/RobotoDraftRegular.woff') format('woff');
 }
-
 @font-face {
   font-family: 'RobotoDraft';
   font-style: normal;
@@ -38,10 +36,9 @@
   src: local('RobotoDraft Medium'),
        local('RobotoDraft-Medium'),
        local('Roboto-Medium'),
-       font-url('RobotoDraftMedium.woff2') format('woff2'),
-       font-url('RobotoDraftMedium.woff') format('woff');
+       asset-url('bootstrap-material-design/fonts/RobotoDraftMedium.woff2') format('woff2'),
+       asset-url('bootstrap-material-design/fonts/RobotoDraftMedium.woff') format('woff');
 }
-
 @font-face {
   font-family: 'RobotoDraft';
   font-style: normal;
@@ -50,10 +47,9 @@
   src: local('RobotoDraft Bold'),
        local('RobotoDraft-Bold'),
        local('Roboto-Bold'),
-       font-url('RobotoDraftBold.woff2') format('woff2'),
-       font-url('RobotoDraftBold.woff') format('woff');
+       asset-url('bootstrap-material-design/fonts/RobotoDraftBold.woff2') format('woff2'),
+       asset-url('bootstrap-material-design/fonts/RobotoDraftBold.woff') format('woff');
 }
-
 @font-face {
   font-family: 'RobotoDraft';
   font-style: italic;
@@ -62,6 +58,6 @@
   src: local('RobotoDraft Italic'),
        local('RobotoDraft-Italic'),
        local('Roboto-Italic'),
-       font-url('RobotoDraftItalic.woff2') format('woff2'),
-       font-url('RobotoDraftItalic.woff') format('woff');
+       asset-url('bootstrap-material-design/fonts/RobotoDraftItalic.woff2') format('woff2'),
+       asset-url('bootstrap-material-design/fonts/RobotoDraftItalic.woff') format('woff');
 }
