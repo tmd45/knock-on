@@ -11,4 +11,14 @@ RSpec.describe 'Route to Sessions', type: :routing do
       })
     end
   end
+
+  describe 'GET /logout' do
+    it 'routes to #destroy' do
+      expect(get '/logout').
+        to route_to({
+        controller: 'sessions',
+        action: 'destroy',
+      })
+    end
+  end
 end

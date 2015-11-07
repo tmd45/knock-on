@@ -4,4 +4,9 @@ class SessionsController < ApplicationController
     session[:member_id] = member.id
     redirect_to root_path, notice: t('omniauth.sessions.signed_in')
   end
+
+  def destroy
+    reset_session
+    redirect_to root_path, notice: t('omniauth.sessions.signed_out')
+  end
 end

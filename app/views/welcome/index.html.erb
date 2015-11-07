@@ -1,1 +1,5 @@
-<p><%= link_to 'Google でログイン', '/auth/google', class: 'btn btn-primary' %></p>
+<% if logged_in? %>
+  <p><%= link_to 'ログイン中です', logout_path, class: 'btn btn-default' %></p>
+<% else %>
+  <p><%= link_to 'Google でログイン', '/auth/google', class: 'btn btn-primary' %></p>
+<% end %>
