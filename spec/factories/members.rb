@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :member do
     provider 'google'
-    uid '1000067890'
-    email 'taro@example.com'
+    sequence(:uid) { |i| "#{1000067890 + i}" }
+    sequence(:email) { |i| "user#{i}@example.com" }
   end
 end
