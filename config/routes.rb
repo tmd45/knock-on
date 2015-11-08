@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'attendees/create'
+
   root to: 'welcome#index'
 
   get '/auth/:provider/callback' => 'sessions#create'
