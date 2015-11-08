@@ -23,6 +23,7 @@ gem 'jbuilder', '~> 2.0'
 
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-google-oauth2', '~> 0.2.9'
+gem 'slack-notifier', '~> 1.4.0'
 
 # bundle exec rake doc:rails generates the API under doc/api.
 group :doc do
