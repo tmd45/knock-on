@@ -1,2 +1,12 @@
-<h1>Members#index</h1>
-<p>Find me in app/views/members/index.html.erb</p>
+<div class="row">
+  <% @members.each do |member| %>
+    <div class="col-lg-3">
+      <%= link_to('#', class: 'list-group-item') do %>
+        <%= image_tag(member.image_url, { alt: 'members image', width: '200px', class: 'img-circle' }) %>
+        <h4><%= member.family_name %> <%= member.given_name %></h4>
+        <p><%= member.email %></p>
+        <p><%= member.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+      <% end %>
+    </div>
+  <% end %>
+</div>
