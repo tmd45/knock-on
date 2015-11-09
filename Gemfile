@@ -21,8 +21,10 @@ gem 'turbolinks'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 
+gem 'dotenv-rails', '~> 2.0.2'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-google-oauth2', '~> 0.2.9'
+gem 'rails_config', '~> 0.4.2'
 gem 'slack-notifier', '~> 1.4.0'
 
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -39,8 +41,6 @@ gem 'puma', '~> 2.14.0'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
-
-gem 'dotenv-rails', '~> 2.0.2'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
