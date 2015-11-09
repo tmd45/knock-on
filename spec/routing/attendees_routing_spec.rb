@@ -11,4 +11,14 @@ RSpec.describe 'Route to Attendees', type: :routing do
       })
     end
   end
+
+  describe 'POST /attendees' do
+    it 'routes to #crete' do
+      expect(post '/attendees').
+        to route_to({
+        controller: 'attendees',
+        action: 'create',
+      })
+    end
+  end
 end
