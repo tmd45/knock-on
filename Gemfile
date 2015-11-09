@@ -64,6 +64,7 @@ group :test do
   gem 'capybara', '~> 2.5.0'
   gem 'poltergeist', '~> 1.6.0'
   gem 'database_cleaner', '~> 1.5.0'
+  gem 'webmock', '~> 1.22.3'
 end
 
 group :development do
