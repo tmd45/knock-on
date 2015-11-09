@@ -39,6 +39,10 @@ body {
   padding: 20px;
 }
 
+object {
+  vertical-align: middle;
+}
+
 [class^="mdi-"], [class*="mdi-"] {
   font-size: 16px;
 }

@@ -1,21 +1,23 @@
 <div class="row">
   <% @members.each do |member| %>
-    <div class="col-lg-3">
-      <%= link_to('#', class: 'list-group-item') do %>
+    <div class="col-lg-3 col-sm-4">
+      <%= form_tag(member_attendees_path(member_id: member.id), { remote: true, class: 'list-group-item' }) do %>
         <%= image_tag(member.image_url, { alt: 'members image', width: '200px', class: 'img-circle' }) %>
         <h4><%= member.family_name %> <%= member.given_name %></h4>
         <p><%= member.email %></p>
-        <p><%= member.created_at.strftime('%Y/%m/%d %H:%M') %></p>
+        <p>技術チーム</p>
+        <%= submit_tag '呼び出す', { data: { disable_with: 'Sending...' }, class: 'btn btn-primary' } %>
       <% end %>
     </div>
   <% end %>
 
-  <div class="col-lg-3">
-    <%= link_to('#', class: 'list-group-item') do %>
+  <div class="col-lg-3 col-sm-4">
+    <%= form_tag(attendees_path, { remote: true, class: 'list-group-item' }) do %>
       <object type="image/svg+xml" data="<%= image_path 'nouser.svg' %>" width="200px" height="200px" class="img-circle"></object>
       <h4>だれか大人の人を呼ぶ</h4>
-      <p> </p>
+      <p>&nbsp;</p>
       <p>@here メンションを飛ばすぞ</p>
+      <%= submit_tag '呼び出す', { data: { disable_with: 'Sending...' }, class: 'btn btn-primary' } %>
     <% end %>
   </div>
 </div>
