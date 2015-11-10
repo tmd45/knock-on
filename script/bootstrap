@@ -62,6 +62,11 @@ bundle install --path vendor/bundle --binstubs vendor/bundle/bin --without produ
 echo "  + Install bower components"
 bower install
 
+echo "  + Copy fonts to public/fonts"
+cp vendor/assets/bower_components/bootstrap/fonts/glyphicons-halflings-regular.* public/fonts
+cp vendor/assets/bower_components/bootstrap-material-design/fonts/Material-Design-Icons.* public/fonts
+cp vendor/assets/bower_components/bootstrap-material-design/fonts/RobotoDraft*.* public/fonts
+
 echo "  + Create PostgreSQL databases"
 ./bin/bundle exec rake db:reset
 
