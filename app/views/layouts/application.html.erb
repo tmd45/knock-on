@@ -8,40 +8,28 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header class="navbar navbar-default navbar-fixed-top navbar-material-light-green" role="navigation">
+    <header class="navbar navbar-default navbar-material-light-green" role="navigation">
       <div class="container">
-        <div class="navbar-header">
+        <div class="navbar-header navbar-right">
           <%= link_to 'KnockOn', root_path, class: 'navbar-brand' %>
         </div>
+        <ul class="nav navbar-nav">
+          <li>
+            <%= link_to '/auth/google' do %>
+              <i class="glyphicon glyphicon-cog"></i>
+            <% end %>
+          </li>
+        </ul>
       </div>
     </header>
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-sm-3 col-md-2 sidebar">
-          <ul class="nav nav-sidebar">
-            <li>
-              <% if logged_in? %>
-                <%= link_to logout_path do %>
-                  <i class="mdi-action-account-circle"></i> ログイン中です
-                <% end %>
-              <% else %>
-                <%= link_to '/auth/google' do %>
-                  <i class="mdi-content-add-circle-outline"></i> Google でログイン
-                <% end %>
-              <% end %>
-            </li>
-          </ul>
+    <div class="container main">
+      <% if flash[:notice] %>
+        <div class="alert alert-success alert-dismissible" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+          <%= flash[:notice] %>
         </div>
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
-          <% if flash[:notice] %>
-            <div class="alert alert-success alert-dismissible" role="alert">
-              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <%= flash[:notice] %>
-            </div>
-          <% end %>
-          <%= yield %>
-        </div>
-      </div>
+      <% end %>
+      <%= yield %>
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
