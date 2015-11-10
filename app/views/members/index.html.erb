@@ -1,23 +1,59 @@
 <div class="row">
   <% @members.each do |member| %>
     <div class="col-lg-3 col-sm-4">
-      <%= form_tag(member_attendees_path(member_id: member.id), { id: "member_#{member.id}_attend", remote: true, class: 'list-group-item' }) do %>
+      <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendMember#{member.id}") do %>
         <%= image_tag(member.image_url, { alt: 'members image', width: '200px', class: 'img-circle' }) %>
         <h4><%= member.family_name %> <%= member.given_name %></h4>
         <p><%= member.email %></p>
         <p>技術チーム</p>
-        <%= submit_tag('呼び出す', { data: { disable_with: 'Sending...' }, form: "member_#{member.id}_attend", class: 'btn btn-primary' }) %>
       <% end %>
+      <div class="modal fade attendMember" id="attendMember<%= member.id %>" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">社員の呼び出し</h4>
+            </div>
+            <div class="modal-body">
+              <p><%= "#{member.family_name} #{member.given_name}（技術チーム） " %>を呼び出します。</p>
+            </div>
+            <div class="modal-footer">
+              <%= form_tag(member_attendees_path(member_id: member.id), id: "attendMemberForm#{member.id}") do%>
+                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendMemberForm#{member.id}" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   <% end %>
 
   <div class="col-lg-3 col-sm-4">
-    <%= form_tag(attendees_path, { id: 'member_here_attend', remote: true, class: 'list-group-item' }) do %>
+    <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendNoMember") do %>
       <object type="image/svg+xml" data="<%= image_path 'nouser.svg' %>" width="200px" height="200px" class="img-circle"></object>
       <h4>だれか大人の人を呼ぶ</h4>
       <p>@here メンションを飛ばすぞ</p>
       <p>&nbsp;</p>
-      <%= submit_tag('呼び出す', { data: { disable_with: 'Sending...' }, form: 'member_here_attend', class: 'btn btn-primary' }) %>
     <% end %>
+    <div class="modal fade attendMember" id="attendNoMember" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">社員の呼び出し</h4>
+          </div>
+          <div class="modal-body">
+            <p>だれでもいいので大人の人に来てもらいます。</p>
+          </div>
+          <div class="modal-footer">
+            <%= form_tag(attendees_path, id: "attendNoMemberForm", remote: true) do%>
+              <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+              <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendNoMemberForm" %>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
