@@ -14,9 +14,40 @@
  *= require bootstrap/dist/css/bootstrap
  *= require bootstrap-material-design/dist/css/material
  *= require bootstrap-material-design/dist/css/ripples
- *= require bootstrap-material-design/dist/css/roboto
  *= require_self
  */
+body {
+  padding-top: 60px;
+}
+
+body,
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3, .h4 {
+  font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
+}
+
+@media (min-width: 768px) {
+  .sidebar {
+    position: fixed;
+    top: 60px;
+    bottom: 0;
+    left: 0;
+    z-index: 1000;
+    display: block;
+    padding: 20px;
+    overflow-x: hidden;
+    overflow-y: auto;
+  }
+}
+
+.main {
+  padding: 20px;
+}
+
+object {
+  vertical-align: middle;
+}
+
 [class^="mdi-"], [class*="mdi-"] {
   font-size: 16px;
 }

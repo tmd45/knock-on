@@ -8,21 +8,40 @@
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header class="navbar navbar-default navbar-material-green" role="navigation">
+    <header class="navbar navbar-default navbar-fixed-top navbar-material-light-green" role="navigation">
       <div class="container">
         <div class="navbar-header">
           <%= link_to 'KnockOn', root_path, class: 'navbar-brand' %>
         </div>
       </div>
     </header>
-    <div class="container">
-      <% if flash[:notice] %>
-        <div class="alert alert-success alert-dismissible" role="alert">
-          <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-          <%= flash[:notice] %>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-sm-3 col-md-2 sidebar">
+          <ul class="nav nav-sidebar">
+            <li>
+              <% if logged_in? %>
+                <%= link_to logout_path do %>
+                  <i class="mdi-action-account-circle"></i> ログイン中です
+                <% end %>
+              <% else %>
+                <%= link_to '/auth/google' do %>
+                  <i class="mdi-content-add-circle-outline"></i> Google でログイン
+                <% end %>
+              <% end %>
+            </li>
+          </ul>
         </div>
-      <% end %>
-      <%= yield %>
+        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+          <% if flash[:notice] %>
+            <div class="alert alert-success alert-dismissible" role="alert">
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <%= flash[:notice] %>
+            </div>
+          <% end %>
+          <%= yield %>
+        </div>
+      </div>
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   </body>
