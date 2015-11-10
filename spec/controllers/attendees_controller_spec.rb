@@ -19,7 +19,7 @@ RSpec.describe AttendeesController, type: :controller do
         ).to_return(status: 200)
 
         get :create, { member_id: member.id }
-        expect(response).to have_http_status(:success)
+        expect(response).to redirect_to root_path
       end
     end
 
@@ -34,7 +34,7 @@ RSpec.describe AttendeesController, type: :controller do
         ).to_return(status: 200)
 
         get :create, { member_id: member.id }
-        expect(response).to have_http_status(:success)
+        expect(response).to redirect_to root_path
       end
     end
 
@@ -47,7 +47,7 @@ RSpec.describe AttendeesController, type: :controller do
         ).to_return(status: 200)
 
         get :create
-        expect(response).to have_http_status(:success)
+        expect(response).to redirect_to root_path
       end
     end
 
@@ -57,8 +57,7 @@ RSpec.describe AttendeesController, type: :controller do
           to_return(status: 400)
 
         get :create
-        expect(response).to have_http_status(503)
-        expect(JSON.parse(response.body)).to match( 'messages' => 'failed' )
+        expect(response).to redirect_to '/members'
       end
     end
   end
