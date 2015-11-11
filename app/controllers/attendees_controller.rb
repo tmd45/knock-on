@@ -22,10 +22,9 @@ class AttendeesController < ApplicationController
     res = notifier.ping message
 
     if res.code_type == Net::HTTPOK
-      flash[:notice] = 'ただいまお呼び出ししています。'
-      head 201
+      redirect_to root_path, notice: 'ただいまお呼び出ししています。'
     else
-      render json: { messages: 'failed' }, status: 503
+      redirect_to members_path, alert: 'お呼び出しに失敗しました。'
     end
   end
 

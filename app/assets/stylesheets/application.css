@@ -16,10 +16,6 @@
  *= require bootstrap-material-design/dist/css/ripples
  *= require_self
  */
-body {
-  padding-top: 60px;
-}
-
 body,
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4 {
@@ -40,10 +36,6 @@ h1, h2, h3, h4, h5, h6,
   }
 }
 
-.main {
-  padding: 20px;
-}
-
 object {
   vertical-align: middle;
 }
@@ -59,4 +51,10 @@ object {
 }
 .btn-xs > [class^="mdi-"], .btn-xs > [class*="mdi-"] {
   font-size: 12px;
+}
+
+.navbar .navbar-nav > li > a {
+  font-size: 20px;
+  padding-top: 19px;
+  padding-bottom: 19px;
 }

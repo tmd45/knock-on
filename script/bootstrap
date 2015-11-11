@@ -62,16 +62,19 @@ bundle install --path vendor/bundle --binstubs vendor/bundle/bin --without produ
 echo "  + Install bower components"
 bower install
 
+echo "  + Copy fonts to public/fonts"
+cp vendor/assets/bower_components/bootstrap/fonts/glyphicons-halflings-regular.* public/fonts
+cp vendor/assets/bower_components/bootstrap-material-design/fonts/Material-Design-Icons.* public/fonts
+cp vendor/assets/bower_components/bootstrap-material-design/fonts/RobotoDraft*.* public/fonts
+
 echo "  + Create PostgreSQL databases"
-if ! psql -l | fgrep -q knock_on_development; then
-  ./bin/bundle exec rake db:create
-fi
-# ./bin/bundle exec rake db:reset
+./bin/bundle exec rake db:reset
 
 
 echo "\n\x1b[34;1m==> \x1b[0m\x1b[37;1mCaveats\x1b[0m"
 echo "To use dotenv create .env and write:"
 echo "  'GOOGLE_CLIENT_ID', 'GOOGLE_CLIENT_SECRET', 'GOOGLE_HOSTED_DOMAIN' (optional) for OmniAuth Google OAuth2"
+echo "  'SLACK_INCOMING_WEBHOOK_URL' for Slack notification"
 
 echo "\nTo use direnv create .envrc and write:"
 echo "  PATH_add vendor/bundle/bin"
