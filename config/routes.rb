@@ -10,6 +10,12 @@ Rails.application.routes.draw do
 
   post '/attendees' => 'attendees#create'
 
+
+  namespace :admin do
+    get '/profile' => 'profile#edit'
+    patch '/profile' => 'profile#update'
+  end
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
