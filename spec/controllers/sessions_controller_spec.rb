@@ -9,8 +9,8 @@ RSpec.describe SessionsController, type: :controller do
 
     subject { get :create, { provider: 'google' } }
 
-    it 'redirect to root path' do
-      expect(subject).to redirect_to root_path
+    it 'redirect to admin path' do
+      expect(subject).to redirect_to '/admin'
     end
 
     it 'save member_id to session' do

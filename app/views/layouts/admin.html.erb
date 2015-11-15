@@ -23,7 +23,6 @@
       </div>
     </header>
     <div class="container main">
-      <h1 class="page-header"><%= @title %></h1>
       <% if flash[:notice] %>
         <div class="alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -36,6 +35,7 @@
           <%= flash[:alert] %>
         </div>
       <% end %>
+      <h1 class="page-header"><%= @title %></h1>
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
