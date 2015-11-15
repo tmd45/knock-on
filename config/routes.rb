@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   post '/attendees' => 'attendees#create'
 
 
+  get '/admin' => 'admin#index'
+
   namespace :admin do
     get '/profile' => 'profile#edit'
     patch '/profile' => 'profile#update'

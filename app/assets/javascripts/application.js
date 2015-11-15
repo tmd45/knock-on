@@ -19,4 +19,6 @@
 //= require_tree .
 $(function() {
   $.material.init();
+
+  $('[data-toggle="tooltip"]').tooltip()
 });
