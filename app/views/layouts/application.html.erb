@@ -15,8 +15,14 @@
         </div>
         <ul class="nav navbar-nav">
           <li>
-            <%= link_to '/auth/google' do %>
-              <i class="glyphicon glyphicon-cog"></i>
+            <% if logged_in? %>
+              <%= link_to admin_path do %>
+                <i class="glyphicon glyphicon-cog"></i>
+              <% end %>
+            <% else %>
+              <%= link_to '/auth/google' do %>
+                <i class="glyphicon glyphicon-cog"></i>
+              <% end %>
             <% end %>
           </li>
         </ul>
