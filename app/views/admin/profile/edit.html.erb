@@ -1,0 +1,51 @@
+<div class="container-fluid">
+  <%= form_for @member, url: admin_profile_path, html: {  } do |f| %>
+    <fieldset>
+      <div class="form-inline">
+        <div class="form-group form-group-lg">
+          <%= f.email_field :email, class: 'form-control floating-label span5', placeholder: 'Email', 'data-hint' => 'account@feedforce.jp' %>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group form-group-lg">
+          <%= f.text_field :family_name, class: 'form-control floating-label span5', placeholder: 'family name', 'data-hint' => 'Complete spelling.' %>
+        </div>
+        <div class="form-group form-group-lg">
+          <%= f.text_field :given_name, class: 'form-control floating-label span5', placeholder: 'given name', 'data-hint' => 'Complete spelling.' %>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group form-group-lg">
+          <%= f.text_field :family_name_kana, class: 'form-control floating-label span5', placeholder: 'Family name (kana)', 'data-hint' => 'Complete kana.' %>
+        </div>
+        <div class="form-group form-group-lg">
+          <%= f.text_field :given_name_kana, class: 'form-control floating-label span5', placeholder: 'Given name (kana)', 'data-hint' => 'Complete kana.' %>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group form-group-lg">
+          <%= f.text_field :family_name_alphabet, class: 'form-control floating-label span5', placeholder: 'Family name (alphabetical)', 'data-hint' => 'Complete alphabetical.' %>
+        </div>
+        <div class="form-group form-group-lg">
+          <%= f.text_field :given_name_alphabet, class: 'form-control floating-label span5', placeholder: 'Given name (alphabetical)', 'data-hint' => 'Complete alphabetical.' %>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group form-group-lg">
+          <div class="input-group">
+            <div class="input-group-addon">@</div>
+            <%= f.text_field :slack_identifier, class: 'form-control floating-label span5', placeholder: 'Slack ID', 'data-hint' => '"@feedkun" is input "feedkun"' %>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group form-group-lg">
+        <%= f.submit nil, class: 'btn btn-primary' %>
+      </div>
+    </fieldset>
+  <% end %>
+</div>
