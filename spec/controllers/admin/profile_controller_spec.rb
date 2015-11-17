@@ -22,6 +22,18 @@ RSpec.describe Admin::ProfileController, type: :controller do
         expect(assigns(:title)).to eq 'プロフィール編集'
       end
     end
+
+    context 'has logged-in unknown member' do
+      before do
+        session[:member_id] = 999
+        get :edit
+      end
+
+      it 'redirect to root and clear session' do
+        expect(response).to redirect_to(root_path)
+        expect(session[:member_id]).to be_nil
+      end
+    end
   end
 
 end
