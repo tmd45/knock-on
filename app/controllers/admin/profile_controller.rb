@@ -4,7 +4,6 @@ class Admin::ProfileController < Admin::ApplicationController
 
   # GET /admin/profile
   def edit
-    @title = 'プロフィール編集'
   end
 
   # PATCH /admin/profile
@@ -17,6 +16,10 @@ class Admin::ProfileController < Admin::ApplicationController
   end
 
   private
+
+  def title
+    @title = 'プロフィール編集'
+  end
 
   def member_params
     params.require(:member).permit(
