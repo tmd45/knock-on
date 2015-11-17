@@ -4,6 +4,13 @@
 %>
 <div class="container-fluid">
   <%= form_for @member, url: admin_profile_path, html: {  } do |f| %>
+    <% if @member.errors.any? %>
+      <div class="alert alert-warning">
+        <% @member.errors.full_messages.each do |msg| %>
+          <p><%= msg %></p>
+        <% end %>
+      </div>
+    <% end %>
     <fieldset>
       <div class="form-inline">
         <div class="form-group form-group-lg">
