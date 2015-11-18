@@ -3,7 +3,7 @@
     <div class="col-lg-3 col-sm-4">
       <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendMember#{member.id}") do %>
         <%= image_tag(member.image_url, { alt: 'members image', width: '200px', class: 'img-circle' }) %>
-        <h4><%= member.family_name %> <%= member.given_name %></h4>
+        <h4><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana}" %></rt></ruby>&nbsp;<ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana}" %></rt></ruby></h4>
         <p><%= member.email %></p>
         <p>技術チーム</p>
       <% end %>
@@ -12,10 +12,19 @@
           <div class="modal-content">
             <div class="modal-header">
               <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-              <h4 class="modal-title">社員の呼び出し</h4>
+              <h4 class="modal-title">&nbsp;</h4>
             </div>
             <div class="modal-body">
-              <p><%= "#{member.family_name} #{member.given_name}（技術チーム） " %>を呼び出します。</p>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-2 col-md-offset-1">
+                    <%= image_tag member.image_url, { width: '160px', class: 'img-circle' } %>
+                  </div>
+                  <div class="col-md-6 col-md-offset-2">
+                    <p class="text-left"><strong><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana}" %></rt></ruby> <ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana}" %></rt></ruby></strong>（技術チーム）を<br>呼び出します。</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <%= form_tag(member_attendees_path(member_id: member.id), id: "attendMemberForm#{member.id}") do%>
@@ -41,7 +50,7 @@
         <div class="modal-content">
           <div class="modal-header">
             <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">社員の呼び出し</h4>
+            <h4 class="modal-title">&nbsp;</h4>
           </div>
           <div class="modal-body">
             <p>だれでもいいので大人の人に来てもらいます。</p>
