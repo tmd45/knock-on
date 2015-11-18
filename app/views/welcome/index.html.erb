@@ -1,37 +1,48 @@
-<div class="container-fluid center">
+<div class="container-fluid welcome-index">
   <div class="row">
-    <div class="col-lg-12">
-      <h2><%= Settings.company.name_kana %> へようこそ</h2>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>お客様向け</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <%= link_to 'Group1', members_path, class: "btn btn-info btn-lg btn-block" %>
-    </div>
-    <div class="col-lg-6">
-      <%= link_to 'Group2', members_path, class: "btn btn-info btn-lg btn-block" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <%= link_to 'Members', members_path, class: "btn btn-primary btn-lg btn-block" %>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-12">
-      <h3>配送業者向け</h3>
-    </div>
-  </div>
-  <div class="row">
-    <div class="col-lg-6">
-      <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendDeliver") do %>
-        <h4>配達に来ました</h4>
+    <div class="col-md-12">
+      <% if Settings.company.logo_image_url.to_s.end_with?('.svg') %>
+        <object type="image/svg+xml" data="<%= Settings.company.logo_image_url %>" class="img-logo"></object>
+      <% else %>
+        <% image_tag Settings.company.logo_image_url, class: 'img-logo' %>
       <% end %>
+      <p class="text-welcome"><%= Settings.company.name_kana %> へようこそ</p>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3><i class="mdi-communication-business"></i> お客様向け</small></h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-5">
+      <%= link_to 'マーケティングチームから探す', '#', class: "list-group-item btn-material-green" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to 'セールスチームから探す', '#', class: "list-group-item btn-material-green" %>
+    </div>
+    <div class="col-md-3">
+      <%= link_to '人事から探す', '#', class: "list-group-item btn-material-green" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-8">
+      <%= link_to 'その他 全社員から探す', members_path, class: "list-group-item btn-material-light-green" %>
+    </div>
+    <div class="col-md-4">
+      <%= link_to '#', class: "list-group-item btn-material-light-green" do %>
+        <i class="glyphicon glyphicon-search"></i> 名前で探す
+      <% end %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-12">
+      <h3><i class="mdi-maps-local-shipping"></i> 配送業者向け</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-6">
+      <%= link_to '配達に来ました', '#', class: 'list-group-item btn-material-lime', 'data-toggle' => 'modal', 'data-target' => "#attendDeliver" %>
       <div class="modal fade attendMember" id="attendDeliver" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -40,22 +51,29 @@
               <h4 class="modal-title">&nbsp;</h4>
             </div>
             <div class="modal-body">
-              <p>よろしいですか？</p>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-2 col-md-offset-1">
+                    <i class="mdi-maps-local-shipping" style="font-size:100px;"></i>
+                  </div>
+                  <div class="col-md-6 col-md-offset-2">
+                    <p class="text-left"><strong>荷物の配達</strong>です。<br>受け取り可能な社員を呼び出します。</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <%= form_tag(attendees_path, id: "attendDeliverForm") do%>
-                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-                <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendDeliverForm" %>
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">キャンセル</button>
+                <%= button_tag '呼び出す', class: 'btn btn-primary btn-lg', data: { disable_with: 'Sending...' }, form: "attendDeliverForm" %>
               <% end %>
             </div>
           </div>
         </div>
       </div>
     </div>
-    <div class="col-lg-6">
-      <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendCollect") do %>
-        <h4>集荷に来ました</h4>
-      <% end %>
+    <div class="col-md-6">
+      <%= link_to '集荷に来ました', '#', class: 'list-group-item btn-material-lime', 'data-toggle' => 'modal', 'data-target' => "#attendCollect"%>
       <div class="modal fade attendMember" id="attendCollect" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
         <div class="modal-dialog">
           <div class="modal-content">
@@ -64,12 +82,21 @@
               <h4 class="modal-title">&nbsp;</h4>
             </div>
             <div class="modal-body">
-              <p>よろしいですか？</p>
+              <div class="container-fluid">
+                <div class="row">
+                  <div class="col-md-2 col-md-offset-1">
+                    <i class="mdi-maps-local-shipping" style="font-size:100px;"></i>
+                  </div>
+                  <div class="col-md-6 col-md-offset-2">
+                    <p class="text-left"><strong>荷物の集荷</strong>です。<br>対応可能な社員を呼び出します。</p>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <%= form_tag(attendees_path, id: "attendCollectForm") do%>
-                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-                <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendCollectForm" %>
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">キャンセル</button>
+                <%= button_tag '呼び出す', class: 'btn btn-primary btn-lg', data: { disable_with: 'Sending...' }, form: "attendCollectForm" %>
               <% end %>
             </div>
           </div>
