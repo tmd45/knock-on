@@ -16,6 +16,11 @@
  *= require bootstrap-material-design/dist/css/ripples
  *= require_self
  */
+body {
+  padding-top: 20px;
+  padding-bottom: 60px;
+}
+
 body,
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4 {
