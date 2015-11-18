@@ -3,7 +3,7 @@
     <div class="col-lg-3 col-sm-4">
       <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendMember#{member.id}") do %>
         <%= image_tag(member.image_url, { alt: 'members image', width: '200px', class: 'img-circle' }) %>
-        <h4><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana}" %></rt></ruby>&nbsp;<ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana}" %></rt></ruby></h4>
+        <h4><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana || '&nbsp;' }".html_safe %></rt></ruby>&nbsp;<ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana || '&nbsp;'}".html_safe %></rt></ruby></h4>
         <p><%= member.email %></p>
         <p>技術チーム</p>
       <% end %>
