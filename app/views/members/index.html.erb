@@ -47,7 +47,7 @@
             <p>だれでもいいので大人の人に来てもらいます。</p>
           </div>
           <div class="modal-footer">
-            <%= form_tag(attendees_path, id: "attendNoMemberForm", remote: true) do%>
+            <%= form_tag(attendees_path, id: "attendNoMemberForm") do%>
               <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
               <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendNoMemberForm" %>
             <% end %>

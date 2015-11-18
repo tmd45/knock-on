@@ -19,4 +19,9 @@ class ApplicationController < ActionController::Base
   def logged_in?
     !!session[:member_id]
   end
+
+  def authenticate
+    return if logged_in?
+    redirect_to root_path, alert: t('omniauth.failure.unauthenticated')
+  end
 end

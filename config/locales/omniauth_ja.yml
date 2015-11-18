@@ -3,3 +3,5 @@ ja:
     sessions:
       logged_in: ログインしました
       logged_out: ログアウトしました
+    failure:
+      unauthenticated: ログインしてください

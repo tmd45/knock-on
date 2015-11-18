@@ -3,26 +3,20 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>KnockOn</title>
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <title><%= @title %> | KnockOn</title>
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>
-    <header class="navbar navbar-default navbar-material-light-green" role="navigation">
+    <header class="navbar navbar-default navbar-top-fixed navbar-material-green" role="navigation">
       <div class="container">
         <div class="navbar-header navbar-right">
           <%= link_to 'KnockOn', root_path, class: 'navbar-brand' %>
         </div>
         <ul class="nav navbar-nav">
           <li>
-            <% if logged_in? %>
-              <%= link_to admin_path do %>
-                <i class="glyphicon glyphicon-cog"></i>
-              <% end %>
-            <% else %>
-              <%= link_to '/auth/google' do %>
-                <i class="glyphicon glyphicon-cog"></i>
-              <% end %>
+            <%= link_to logout_path, { 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'logout' } do %>
+              <i class="glyphicon glyphicon-log-out"></i>
             <% end %>
           </li>
         </ul>
@@ -41,6 +35,7 @@
           <%= flash[:alert] %>
         </div>
       <% end %>
+      <h1 class="page-header"><%= @title %></h1>
       <%= yield %>
     </div>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
