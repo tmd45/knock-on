@@ -37,32 +37,4 @@
       </div>
     </div>
   <% end %>
-
-  <div class="col-lg-3 col-sm-4">
-    <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendNoMember") do %>
-      <object type="image/svg+xml" data="<%= image_path 'nouser.svg' %>" width="200px" height="200px" class="img-circle"></object>
-      <h4>だれか大人の人を呼ぶ</h4>
-      <p>@here メンションを飛ばすぞ</p>
-      <p>&nbsp;</p>
-    <% end %>
-    <div class="modal fade attendMember" id="attendNoMember" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
-      <div class="modal-dialog">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title">&nbsp;</h4>
-          </div>
-          <div class="modal-body">
-            <p>だれでもいいので大人の人に来てもらいます。</p>
-          </div>
-          <div class="modal-footer">
-            <%= form_tag(attendees_path, id: "attendNoMemberForm") do%>
-              <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
-              <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendNoMemberForm" %>
-            <% end %>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>

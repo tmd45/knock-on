@@ -27,6 +27,10 @@ h1, h2, h3, h4, h5, h6,
   font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
+.main .center {
+  text-align: center;
+}
+
 @media (min-width: 768px) {
   .sidebar {
     position: fixed;

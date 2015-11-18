@@ -1,3 +1,80 @@
-<form>
-  <%= link_to 'Members', members_path, class: "btn btn-primary btn-lg btn-block" %>
-</form>
+<div class="container-fluid center">
+  <div class="row">
+    <div class="col-lg-12">
+      <h2><%= Settings.company.name_kana %> へようこそ</h2>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>お客様向け</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= link_to 'Group1', members_path, class: "btn btn-info btn-lg btn-block" %>
+    </div>
+    <div class="col-lg-6">
+      <%= link_to 'Group2', members_path, class: "btn btn-info btn-lg btn-block" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <%= link_to 'Members', members_path, class: "btn btn-primary btn-lg btn-block" %>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-12">
+      <h3>配送業者向け</h3>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-lg-6">
+      <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendDeliver") do %>
+        <h4>配達に来ました</h4>
+      <% end %>
+      <div class="modal fade attendMember" id="attendDeliver" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">&nbsp;</h4>
+            </div>
+            <div class="modal-body">
+              <p>よろしいですか？</p>
+            </div>
+            <div class="modal-footer">
+              <%= form_tag(attendees_path, id: "attendDeliverForm") do%>
+                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendDeliverForm" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6">
+      <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendCollect") do %>
+        <h4>集荷に来ました</h4>
+      <% end %>
+      <div class="modal fade attendMember" id="attendCollect" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+              <h4 class="modal-title">&nbsp;</h4>
+            </div>
+            <div class="modal-body">
+              <p>よろしいですか？</p>
+            </div>
+            <div class="modal-footer">
+              <%= form_tag(attendees_path, id: "attendCollectForm") do%>
+                <button type="button" class="btn btn-default" data-dismiss="modal">キャンセル</button>
+                <%= button_tag '呼び出す', class: 'btn btn-primary', data: { disable_with: 'Sending...' }, form: "attendCollectForm" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
