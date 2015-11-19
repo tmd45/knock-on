@@ -2,12 +2,14 @@
   <div class="container">
     <div class="row">
       <% @members.each do |member| %>
-        <div class="col-lg-3 col-sm-4">
+        <div class="col-md-3">
           <%= link_to('#', class: 'list-group-item member-item', 'data-toggle' => 'modal', 'data-target' => "#attendMember#{member.id}") do %>
-            <%= image_tag member.image_url, { alt: 'members image', class: 'img-responsive img-circle' } %>
-            <h4><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana.presence || '&nbsp;' }".html_safe %></rt></ruby>&nbsp;<ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana.presence || '&nbsp;'}".html_safe %></rt></ruby></h4>
-            <p><%= member.email %></p>
-            <p>技術チーム</p>
+            <%= image_tag member.image_url, { alt: 'members image', class: 'img-responsive' } %>
+            <div class="card-content">
+              <h4><ruby><%= member.family_name %><rt><%= member.family_name_kana.presence || '&nbsp;'.html_safe %></rt></ruby>&nbsp;<ruby><%= member.given_name %><rt><%= member.given_name_kana.presence || '&nbsp;'.html_safe %></rt></ruby></h4>
+              <p class="addr"><%= member.email %></p>
+              <p><%= member.title.presence || '&nbsp;'.html_safe %></p>
+            </div>
           <% end %>
           <div class="modal fade attendMember" id="attendMember<%= member.id %>" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
             <div class="modal-dialog">
@@ -19,11 +21,20 @@
                 <div class="modal-body">
                   <div class="container-fluid">
                     <div class="row">
-                      <div class="col-md-2 col-md-offset-1">
-                        <%= image_tag member.image_url, { width: '160px', class: 'img-circle' } %>
+                      <div class="col-md-2">
+                        <%= image_tag member.image_url, { width: '190px', class: 'img-circle' } %>
                       </div>
-                      <div class="col-md-6 col-md-offset-2">
-                        <p class="text-left text-nowrap"><strong><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana}" %></rt></ruby> <ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana}" %></rt></ruby></strong>（技術チーム）を<br>呼び出します。</p>
+                      <div class="col-md-6 col-md-offset-3">
+                        <p class="text-left">
+                        <% if member.group.name_kana.present? %>
+                          <%= member.group.name_kana %>
+                        <% end %>
+                        <% if member.title.present? %>
+                          <%= member.title %>
+                        <% end %>
+                        </p>
+                        <p class="text-left member-name"><strong><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana}" %></rt></ruby> <ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana}" %></rt></ruby></strong></p>
+                        <p class="text-left">を呼び出します。</p>
                       </div>
                     </div>
                   </div>

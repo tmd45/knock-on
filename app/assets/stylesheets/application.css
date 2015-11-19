@@ -107,6 +107,38 @@ body.welcome {
   padding-top: 20px;
 }
 
+.welcome .members-index .list-group-item {
+  padding: 0;
+}
+
+.welcome .members-index .list-group-item img {
+  margin: 0;
+  padding: 0;
+}
+
+.welcome .members-index .card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 0.9em;
+  padding-top: 5em;
+  padding-bottom: 0.2em;
+  background: -moz-linear-gradient(top, rgba(24,24,24,0), rgba(24,24,24,0.9));
+  background: -o-linear-gradient(rgba(24,24,24,0), rgba(24,24,24,0.9));
+  background: -webkit-gradient(linear, left top, left bottom, from(rgba(24,24,24,0)), to(rgba(24,24,24,0.9)));
+  background: linear-gradient(top, rgba(24,24,24,0), rgba(24,24,24,0.9));
+  color: #fefefe;
+}
+
+.welcome .members-index .card-content p {
+  font-size: 0.7em;
+}
+
+.welcome .members-index p.member-name {
+  font-size: 1.7em;
+}
+
 /**********************************************************
  * in Admin
  */

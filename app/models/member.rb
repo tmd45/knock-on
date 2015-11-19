@@ -5,6 +5,8 @@ class Member < ActiveRecord::Base
   validates_uniqueness_of :uid, scope: :provider
   validates_uniqueness_of :email
 
+  default_scope { order(:family_name_kana, :family_name, :email) }
+
   # Member find or create from OmniAuth::AuthHash
   #
   # @param auth_hash [OmniAuth::AuthHash] user infomation
