@@ -28,6 +28,12 @@
 
       <div class="form-inline">
         <div class="form-group form-group-lg">
+          <%= f.select :group_id, Group.all.collect { |g| [ (g.name_kana.presence || '役員など'), g.id ] }, { include_blank: true }, { class: 'form-control floating-label', placeholder: t('activerecord.models.group') } %>
+        </div>
+      </div>
+
+      <div class="form-inline">
+        <div class="form-group form-group-lg">
           <%= f.text_field :family_name, class: 'form-control floating-label span5', placeholder: t(:family_name, scope: attr_scope), 'data-hint' => t(:family_name, scope: hint_scope) %>
         </div>
         <div class="form-group form-group-lg">

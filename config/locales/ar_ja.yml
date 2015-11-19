@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       member: 社員
+      group: チーム
     attributes:
       member:
         provider: プロバイダ
@@ -14,6 +15,10 @@ ja:
         family_name_alphabet: 姓（アルファベット）
         image_url: プロフィール画像
         slack_identifier: Slack ID
+      group:
+        name: チーム ID
+        name_kana: チーム名
+        order: 表示順
     hints:
       member:
         email: "会社のメールアドレスを入力してください（account@%{domain}）"

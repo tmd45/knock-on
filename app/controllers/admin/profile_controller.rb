@@ -24,6 +24,7 @@ class Admin::ProfileController < Admin::ApplicationController
   def member_params
     params.require(:member).permit(
       :email,
+      :group_id,
       :given_name, :family_name,
       :given_name_kana, :family_name_kana,
       :given_name_alphabet, :family_name_alphabet,
