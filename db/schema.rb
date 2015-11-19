@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151119125252) do
+ActiveRecord::Schema.define(version: 20151119145211) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -40,9 +40,11 @@ ActiveRecord::Schema.define(version: 20151119125252) do
     t.string   "slack_identifier"
     t.datetime "created_at",           null: false
     t.datetime "updated_at",           null: false
+    t.integer  "group_id"
   end
 
   add_index "members", ["email"], name: "idx_members_email", unique: true, using: :btree
+  add_index "members", ["group_id"], name: "index_members_on_group_id", using: :btree
   add_index "members", ["provider", "uid"], name: "idx_members_provider_uid", unique: true, using: :btree
 
 end
