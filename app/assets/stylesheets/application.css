@@ -16,11 +16,6 @@
  *= require bootstrap-material-design/dist/css/ripples
  *= require_self
  */
-body {
-  padding-top: 20px;
-  padding-bottom: 120px;
-}
-
 body,
 h1, h2, h3, h4, h5, h6,
 .h1, .h2, .h3, .h4 {
@@ -64,10 +59,19 @@ body.welcome {
 
 .welcome .main {
   text-align: center;
+  padding: 0;
 }
 
-.welcome .row {
+.welcome section:last-of-type {
+  padding-bottom: 120px;
+}
+
+.welcome section .row {
   margin-bottom: 16px;
+}
+
+.welcome .welcome-index {
+  padding-top: 20px;
 }
 
 .welcome .img-logo {
@@ -83,7 +87,18 @@ body.welcome {
   color: #a0a0a0;
 }
 
-.welcome .welcome-index .list-group-item {
+.welcome .welcome-business,
+.welcome .welcome-deliver {
+  padding-top: 1em;
+}
+
+.welcome .welcome-business h3,
+.welcome .welcome-deliver h3 {
+  margin-bottom: 20px;
+}
+
+.welcome .welcome-business .list-group-item,
+.welcome .welcome-deliver .list-group-item {
   padding-top: 30px;
   padding-bottom: 30px;
 }
@@ -92,3 +107,7 @@ body.welcome {
  * in Admin
  */
 
+body.admin {
+  padding-top: 20px;
+  padding-bottom: 120px;
+}
