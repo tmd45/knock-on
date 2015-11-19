@@ -26,12 +26,10 @@
                       </div>
                       <div class="col-md-6 col-md-offset-3">
                         <p class="text-left">
-                        <% if member.group.name_kana.present? %>
+                        <% if member.group %>
                           <%= member.group.name_kana %>
                         <% end %>
-                        <% if member.title.present? %>
-                          <%= member.title %>
-                        <% end %>
+                        <%= member.title %>
                         </p>
                         <p class="text-left member-name"><strong><ruby><%= "#{member.family_name}" %><rt><%= "#{member.family_name_kana}" %></rt></ruby> <ruby><%= "#{member.given_name}" %><rt><%= "#{member.given_name_kana}" %></rt></ruby></strong></p>
                         <p class="text-left">を呼び出します。</p>
