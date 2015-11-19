@@ -7,8 +7,8 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
-    <header class="navbar navbar-default navbar-material-light-green" role="navigation">
+  <body class="welcome">
+    <header class="navbar navbar-default navbar-fixed-bottom navbar-material-light-green" role="navigation">
       <div class="container">
         <div class="navbar-header navbar-right">
           <%= link_to 'KnockOn', root_path, class: 'navbar-brand' %>
@@ -28,7 +28,7 @@
         </ul>
       </div>
     </header>
-    <div class="container main">
+    <div class="container-fluid main">
       <% if flash[:notice] %>
         <div class="alert alert-success alert-dismissible" role="alert">
           <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

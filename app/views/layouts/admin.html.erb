@@ -7,15 +7,15 @@
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
-  <body>
-    <header class="navbar navbar-default navbar-top-fixed navbar-material-green" role="navigation">
+  <body class="admin">
+    <header class="navbar navbar-default navbar-fixed-bottom navbar-material-green" role="navigation">
       <div class="container">
         <div class="navbar-header navbar-right">
-          <%= link_to 'KnockOn', root_path, class: 'navbar-brand' %>
+          <%= link_to 'KnockOn', root_path, { class: 'navbar-brand', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Go to welcome page' } %>
         </div>
         <ul class="nav navbar-nav">
           <li>
-            <%= link_to logout_path, { 'data-toggle' => 'tooltip', 'data-placement' => 'bottom', 'title' => 'logout' } do %>
+            <%= link_to logout_path, { 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'logout' } do %>
               <i class="glyphicon glyphicon-log-out"></i>
             <% end %>
           </li>

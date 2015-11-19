@@ -22,25 +22,11 @@ h1, h2, h3, h4, h5, h6,
   font-family: 游ゴシック体, 'Yu Gothic', YuGothic, 'ヒラギノ角ゴシック Pro', 'Hiragino Kaku Gothic Pro', メイリオ, Meiryo, Osaka, 'ＭＳ Ｐゴシック', 'MS PGothic', sans-serif;
 }
 
-@media (min-width: 768px) {
-  .sidebar {
-    position: fixed;
-    top: 60px;
-    bottom: 0;
-    left: 0;
-    z-index: 1000;
-    display: block;
-    padding: 20px;
-    overflow-x: hidden;
-    overflow-y: auto;
-  }
-}
-
 object {
   vertical-align: middle;
 }
 
-[class^="mdi-"], [class*="mdi-"] {
+.btn [class^="mdi-"], .btn [class*="mdi-"] {
   font-size: 16px;
 }
 .btn-lg > [class^="mdi-"], .btn-lg > [class*="mdi-"] {
@@ -62,4 +48,70 @@ object {
 /* regretful fixed */
 .form-control-wrapper .form-control:invalid {
     background-image: linear-gradient(#f44336, #f44336), linear-gradient(#d2d2d2, #d2d2d2);
+}
+
+/**********************************************************
+ * in Welcome
+ */
+body.welcome {
+  font-size: 18px;
+}
+
+.welcome .main {
+  text-align: center;
+  padding: 0;
+}
+
+.welcome section:last-of-type {
+  padding-bottom: 120px;
+}
+
+.welcome section .row {
+  margin-bottom: 16px;
+}
+
+.welcome .welcome-index {
+  padding-top: 20px;
+}
+
+.welcome .img-logo {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  margin-bottom: 12px;
+  width: 350px;
+  height: 120px;
+}
+
+.welcome .text-welcome {
+  font-weight: 900;
+  color: #a0a0a0;
+}
+
+.welcome .welcome-business,
+.welcome .welcome-deliver {
+  padding-top: 1em;
+}
+
+.welcome .welcome-business h3,
+.welcome .welcome-deliver h3 {
+  margin-bottom: 20px;
+}
+
+.welcome .welcome-business .list-group-item,
+.welcome .welcome-deliver .list-group-item {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
+.welcome .members-index {
+  padding-top: 20px;
+}
+
+/**********************************************************
+ * in Admin
+ */
+
+body.admin {
+  padding-top: 20px;
+  padding-bottom: 120px;
 }

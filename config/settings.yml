@@ -1,2 +1,8 @@
+company:
+  name: <%= ENV['COMPANY_NAME'] %>
+  name_kana: <%= ENV['COMPANY_NAME_KANA'] %>
+  name_formal: <%= ENV['COMPANY_NAME_FORMAL'] %>
+  name_formal_kana: <%= ENV['COMPANY_NAME_FORMAL_KANA'] %>
+  logo_image_url: <%= ENV['COMPANY_LOGO_IMAGE_URL'] %>
 slack:
   incoming_webhook_url: <%= Rails.application.secrets.slack_incoming_webhook_url %>
