@@ -1,8 +1,7 @@
 FactoryGirl.define do
   factory :group do
-    name "MyString"
-name_alphabet "MyString"
-order "MyString"
+    sequence(:name) { |i| "group#{i}" }
+    sequence(:name_kana) { |i| "グループ #{i}" }
+    order 0
   end
-
 end
