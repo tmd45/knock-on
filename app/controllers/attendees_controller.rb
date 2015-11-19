@@ -14,11 +14,21 @@ class AttendeesController < ApplicationController
     notifier = Slack::Notifier.new Settings.slack.incoming_webhook_url
     mention =
       if member && member.slack_identifier
-        "<@#{member.slack_identifier}>"
+        "<@#{member.slack_identifier}> #{member.family_name} #{member.given_name} さん"
       else
         "<!here>"
       end
-    message = "#{mention} 受付にお客様がお見えです。"
+
+    message =
+      case params[:type].presence
+      when 'deliver'
+        "#{mention} 受付に *荷物の配達* が来ています。対応をお願いします。"
+      when 'collect'
+        "#{mention} 受付に *荷物の集荷* が来ています。対応をお願いします。"
+      else
+        "#{mention} 受付にお客様がお見えです。"
+      end
+
     res = notifier.ping message
 
     if res.code_type == Net::HTTPOK

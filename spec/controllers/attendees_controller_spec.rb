@@ -9,12 +9,19 @@ RSpec.describe AttendeesController, type: :controller do
     end
 
     context 'has member_id and the member has slack_identifier' do
-      let(:member) { create(:member, slack_identifier: 'taro') }
+      let(:member) do
+        create(
+          :member,
+          family_name: '山田',
+          given_name: '太郎',
+          slack_identifier: 'taro'
+        )
+      end
 
       it 'notificate @mention to slack and returns http success' do
         WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
           body: {
-            payload: "{\"text\":\"\\u003c@taro\\u003e 受付にお客様がお見えです。\"}"
+            payload: "{\"text\":\"\\u003c@taro\\u003e 山田 太郎 さん 受付にお客様がお見えです。\"}"
           }
         ).to_return(status: 200)
 
