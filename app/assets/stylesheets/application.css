@@ -103,6 +103,10 @@ body.welcome {
   padding-bottom: 30px;
 }
 
+.welcome .members-index {
+  padding-top: 20px;
+}
+
 /**********************************************************
  * in Admin
  */
