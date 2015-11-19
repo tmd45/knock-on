@@ -103,8 +103,17 @@ body.welcome {
   padding-bottom: 30px;
 }
 
+
+/****************************
+ * in members/index
+ */
 .welcome .members-index {
   padding-top: 20px;
+}
+
+.welcome .members-index .row .col-md-3 {
+  text-align: center;
+  margin-bottom: 28px;
 }
 
 .welcome .members-index .list-group-item {
