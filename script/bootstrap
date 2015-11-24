@@ -69,6 +69,7 @@ cp vendor/assets/bower_components/bootstrap-material-design/fonts/RobotoDraft*.*
 
 echo "  + Create PostgreSQL databases"
 ./bin/bundle exec rake db:reset
+./bin/bundle exec rake db:seed
 
 
 echo "\n\x1b[34;1m==> \x1b[0m\x1b[37;1mCaveats\x1b[0m"

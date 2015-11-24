@@ -2,6 +2,7 @@ ja:
   activerecord:
     models:
       member: 社員
+      group: チーム
     attributes:
       member:
         provider: プロバイダ
@@ -14,6 +15,12 @@ ja:
         family_name_alphabet: 姓（アルファベット）
         image_url: プロフィール画像
         slack_identifier: Slack ID
+        title: 役職・職種
+        title_alphabet: 役職・職種（アルファベット）
+      group:
+        name: チーム ID
+        name_kana: チーム名
+        order: 表示順
     hints:
       member:
         email: "会社のメールアドレスを入力してください（account@%{domain}）"
@@ -25,3 +32,5 @@ ja:
         family_name_alphabet: アルファベットのみで入力してください。検索時に大文字小文字は区別されません
         image_url: ''
         slack_identifier: アットマーク @ は不要です
+        title: '名刺に記載された役職や職種を書くとよいでしょう！ 例: プロダクトマネージャー'
+        title_alphabet: '名刺に記載された役職や職種の英語表記を書くとよいでしょう！ 例: Product Manager'

@@ -27,7 +27,8 @@ class Admin::ProfileController < Admin::ApplicationController
       :given_name, :family_name,
       :given_name_kana, :family_name_kana,
       :given_name_alphabet, :family_name_alphabet,
-      :slack_identifier
+      :slack_identifier,
+      :group_id, :title, :title_alphabet,
     )
   end
 end
