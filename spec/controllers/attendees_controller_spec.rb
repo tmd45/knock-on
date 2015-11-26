@@ -26,7 +26,8 @@ RSpec.describe AttendeesController, type: :controller do
         ).to_return(status: 200)
 
         get :create, { member_id: member.id }
-        expect(response).to redirect_to root_path
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
       end
     end
 
@@ -41,7 +42,8 @@ RSpec.describe AttendeesController, type: :controller do
         ).to_return(status: 200)
 
         get :create, { member_id: member.id }
-        expect(response).to redirect_to root_path
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
       end
     end
 
@@ -54,7 +56,8 @@ RSpec.describe AttendeesController, type: :controller do
         ).to_return(status: 200)
 
         get :create
-        expect(response).to redirect_to root_path
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
       end
     end
 

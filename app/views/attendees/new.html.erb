@@ -1,0 +1,79 @@
+<section class="calling-member">
+  <div class="container">
+    <div class="row loading">
+      <div class="col-md-12">
+        <div class="loading-balloon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="row messages">
+      <div class="col-md-12">
+        <h3>お呼び出ししています</h3>
+        <p>しばらくお待ち下さい。</p>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to '呼び出しをキャンセルする', '#', class: 'list-group-item btn-material-red', 'data-toggle' => 'modal', 'data-target' => '#attendCancel' %>
+        <div class="modal fade attendMember" id="attendCancel" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">&nbsp;</h4>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="text-left">呼び出しをキャンセルし、トップページへ戻ります。</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%= form_tag(root_path, method: :get, id: 'attendCancelForm') do%>
+                  <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">呼び出しをつづける</button>
+                  <%= button_tag '呼び出しをキャンセルする', class: 'btn btn-warning btn-lg', data: { disable_with: 'Sending...' }, form: 'attendCancelForm' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <%= link_to '（社員向け）応対しました', '#', class: 'list-group-item btn-material-grey', 'data-toggle' => 'modal', 'data-target' => '#attendFinish' %>
+        <div class="modal fade attendMember" id="attendFinish" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">&nbsp;</h4>
+              </div>
+              <div class="modal-body">
+                <div class="container-fluid">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <p class="text-left">こちらは<strong>応対した<%= Settings.company.name_kana %>社員が操作</strong>します。<br>応対が完了しましたか？</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer">
+                <%= form_tag(root_path, method: :get, id: 'attendFinishForm') do%>
+                <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">キャンセル</button>
+                  <%= button_tag '応対しました', class: 'btn btn-primary btn-lg', data: { disable_with: 'Sending...' }, form: 'attendFinishForm' %>
+                <% end %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

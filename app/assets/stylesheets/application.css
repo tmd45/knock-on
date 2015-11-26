@@ -148,6 +148,28 @@ body.welcome {
   font-size: 1.7em;
 }
 
+/****************************
+ * in attendees/new
+ */
+.welcome .calling-member {
+  padding-top: 7%;
+}
+
+.welcome .calling-member .loading {
+  padding-top: 0.7em;
+  padding-bottom: 0.7em;
+}
+
+.welcome .calling-member .list-group-item {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.welcome .calling-member .messages {
+  height: 15em;
+}
+
+
 /**********************************************************
  * in Admin
  */
