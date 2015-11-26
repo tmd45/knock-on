@@ -32,7 +32,7 @@ class AttendeesController < ApplicationController
     res = notifier.ping message
 
     if res.code_type == Net::HTTPOK
-      redirect_to root_path, notice: 'ただいまお呼び出ししています。'
+      render :new
     else
       redirect_to members_path, alert: 'お呼び出しに失敗しました。'
     end
