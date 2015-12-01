@@ -49,7 +49,7 @@
         </div>
       <% end %>
 
-      <% if flash[:group_name] == 'human-resource' %>
+      <% if flash[:need_general_mention] %>
         <div class="col-md-3">
           <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendNoMember") do %>
             <% if Settings.company.no_image_url.to_s.end_with?('.svg') %>

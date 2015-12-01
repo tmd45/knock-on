@@ -21,13 +21,13 @@
     </div>
     <div class="row">
       <div class="col-md-5">
-        <%= link_to '総合受付・人事総務', members_path(group_name: 'human-resource'), class: "list-group-item btn-material-green" %>
+        <%= link_to '総合受付・人事総務', members_path(group_names: 'human-resource,general-affairs'), class: "list-group-item btn-material-green" %>
       </div>
       <div class="col-md-3">
-        <%= link_to 'セールス', members_path(group_name: 'sales'), class: "list-group-item btn-material-green" %>
+        <%= link_to 'セールス', members_path(group_names: 'sales'), class: "list-group-item btn-material-green" %>
       </div>
       <div class="col-md-4">
-        <%= link_to 'マーケティング', members_path(group_name: 'marketing'), class: "list-group-item btn-material-green" %>
+        <%= link_to 'マーケティング', members_path(group_names: 'marketing'), class: "list-group-item btn-material-green" %>
       </div>
     </div>
     <div class="row thin">

@@ -30,10 +30,10 @@ class Member < ActiveRecord::Base
   # Members search
   #
   # @param options [Hash] the options to search members.
-  # @option options [String] :group_name ('') The group name
+  # @option options [Array] :group_names The group name strings
   def self.search(options = {})
-    if options[:group_name]
-      Group.find_by(name: options[:group_name]).try(:members)
+    if options[:group_names].present?
+      Group.where(name: options[:group_names]).map(&:members).flatten
     else
       Member.all
     end
