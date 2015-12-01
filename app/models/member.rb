@@ -26,4 +26,16 @@ class Member < ActiveRecord::Base
       member.image_url   = image_url
     end
   end
+
+  # Members search
+  #
+  # @param options [Hash] the options to search members.
+  # @option options [String] :group_name ('') The group name
+  def self.search(options = {})
+    if options[:group_name]
+      Group.find_by(name: options[:group_name]).try(:members)
+    else
+      Member.all
+    end
+  end
 end
