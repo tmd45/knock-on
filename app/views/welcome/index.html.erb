@@ -5,7 +5,7 @@
         <% if Settings.company.logo_image_url.to_s.end_with?('.svg') %>
           <object type="image/svg+xml" data="<%= Settings.company.logo_image_url %>" class="img-logo"></object>
         <% else %>
-          <% image_tag Settings.company.logo_image_url, class: 'img-logo' %>
+          <%= image_tag Settings.company.logo_image_url, class: 'img-logo' %>
         <% end %>
         <p class="text-welcome"><%= Settings.company.name_kana %> へようこそ</p>
       </div>
@@ -21,20 +21,20 @@
     </div>
     <div class="row">
       <div class="col-md-5">
-        <%= link_to 'マーケティングチームから探す', '#', class: "list-group-item btn-material-green" %>
-      </div>
-      <div class="col-md-4">
-        <%= link_to 'セールスチームから探す', '#', class: "list-group-item btn-material-green" %>
+        <%= link_to '総合受付・人事総務', members_path(group_name: 'human-resource'), class: "list-group-item btn-material-green" %>
       </div>
       <div class="col-md-3">
-        <%= link_to '人事から探す', '#', class: "list-group-item btn-material-green" %>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-8">
-        <%= link_to 'その他 全社員から探す', members_path, class: "list-group-item btn-material-light-green" %>
+        <%= link_to 'セールス', members_path(group_name: 'sales'), class: "list-group-item btn-material-green" %>
       </div>
       <div class="col-md-4">
+        <%= link_to 'マーケティング', members_path(group_name: 'marketing'), class: "list-group-item btn-material-green" %>
+      </div>
+    </div>
+    <div class="row thin">
+      <div class="col-md-7">
+        <%= link_to 'その他 全社員から探す', members_path, class: "list-group-item btn-material-light-green" %>
+      </div>
+      <div class="col-md-5">
         <%= link_to '#', class: "list-group-item btn-material-light-green" do %>
           <i class="glyphicon glyphicon-search"></i> 名前で探す
         <% end %>
