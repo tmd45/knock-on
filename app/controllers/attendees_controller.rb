@@ -3,8 +3,10 @@ class AttendeesController < ApplicationController
   # POST /members/:member_id/attendees
   # POST /attendees
   #
+  # @example parameters
+  #   - type: 呼び出し種別（deliver, collect, 未指定）
   # @note
-  #   フォームの remote: true でリクエストされる想定なので
+  #   フォームの `remote: true` でリクエストされる想定なので
   #   失敗時にはエラーメッセージを json で返す
   def create
     if params[:member_id]
