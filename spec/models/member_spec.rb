@@ -61,4 +61,36 @@ RSpec.describe Member, type: :model do
       end
     end
   end
+
+  describe '.search' do
+    before do
+      @member1 = create(:member, group: create(:group_sales))
+      @member2 = create(:member, group: create(:group_marketing))
+      @member3 = create(:member, group: create(:group_human_resource))
+      @member4 = create(:member, group: create(:group_general_affairs))
+    end
+
+    context 'has no group name' do
+      it 'return all members' do
+        result = Member.search
+        expect(result).to match_array([ @member1, @member2, @member3, @member4 ])
+      end
+    end
+
+    context 'has group name "sales"' do
+      it 'return only sales member' do
+        option = { group_names: [ 'sales' ] }
+        result = Member.search(option)
+        expect(result).to match_array([ @member1 ])
+      end
+    end
+
+    context 'has group names "human-resource" and "general-affairs"' do
+      it 'return human-resource member and general-affairs member' do
+        option = { group_names: [ 'human-resource', 'general-affairs' ] }
+        result = Member.search(option)
+        expect(result).to match_array([ @member3, @member4 ])
+      end
+    end
+  end
 end
