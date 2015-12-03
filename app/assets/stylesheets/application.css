@@ -99,10 +99,15 @@ body.welcome {
 
 .welcome .welcome-business .list-group-item,
 .welcome .welcome-deliver .list-group-item {
-  padding-top: 30px;
-  padding-bottom: 30px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
+.welcome .welcome-business .thin .list-group-item,
+.welcome .welcome-deliver .thin .list-group-item {
+  padding-top: 28px;
+  padding-bottom: 28px;
+}
 
 /****************************
  * in members/index

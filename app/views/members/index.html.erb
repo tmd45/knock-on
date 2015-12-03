@@ -48,6 +48,54 @@
           </div>
         </div>
       <% end %>
+
+      <% if flash[:need_general_mention] %>
+        <div class="col-md-3">
+          <%= link_to('#', class: 'list-group-item', 'data-toggle' => 'modal', 'data-target' => "#attendNoMember") do %>
+            <% if Settings.company.no_image_url.to_s.end_with?('.svg') %>
+              <object type="image/svg+xml" data="<%= Settings.company.no_image_url %>" alt="noimage" class="img-responsive"></object>
+            <% else %>
+              <%= image_tag Settings.company.no_image_url, { alt: 'noimage', class: 'img-responsive' } %>
+            <% end %>
+            <div class="card-content">
+              <h4>総合受付</h4>
+              <p>指名せずに呼び出し</p>
+            </div>
+          <% end %>
+          <div class="modal fade attendMember" id="attendNoMember" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                  <h4 class="modal-title">&nbsp;</h4>
+                </div>
+                <div class="modal-body">
+                  <div class="container-fluid">
+                    <div class="row">
+                      <div class="col-md-2">
+                        <% if Settings.company.no_image_url.to_s.end_with?('.svg') %>
+                          <object type="image/svg+xml" data="<%= Settings.company.no_image_url %>" alt="noimage" width="190px" height="190px" class="img-circle"></object>
+                        <% else %>
+                          <%= image_tag Settings.company.no_image_url, { alt: 'noimage', width: '190px', height: '190px', class: 'img-circle' } %>
+                        <% end %>
+                      </div>
+                      <div class="col-md-6 col-md-offset-3">
+                        <p class="text-left">とくに人を指名せずに<br>呼び出します。</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  <%= form_tag(attendees_path, id: 'attendNoMemberForm') do%>
+                    <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">キャンセル</button>
+                    <%= button_tag '呼び出す', class: 'btn btn-primary btn-lg', data: { disable_with: 'Sending...' }, form: "attendNoMemberForm" %>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      <% end %>
     </div>
   </div>
 </section>
