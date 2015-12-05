@@ -17,3 +17,6 @@ FactoryGirl.create(:group_general_affairs)
 FactoryGirl.create(:group_human_resource)
 FactoryGirl.create(:group_marketing)
 FactoryGirl.create(:group_sales)
+
+# for Environment
+load(Rails.root.join( 'db', 'seeds', "#{Rails.env.downcase}.rb"))

@@ -7,6 +7,8 @@ company:
   no_image_url: <%= ENV['COMPANY_NO_IMAGE_URL'] %>
 slack:
   incoming_webhook_url: <%= Rails.application.secrets.slack_incoming_webhook_url %>
+member:
+  no_image_url: <%= ENV['MEMBER_NO_IMAGE_URL'] %>
 group:
   need_general_mention:
     - general-affairs
