@@ -82,4 +82,10 @@
       </div>
     </fieldset>
   <% end %>
+  <%= link_to logout_path, { class: 'btn btn-warning' } do %>
+    <i class="glyphicon glyphicon-log-out"></i> logout
+  <% end %>
+  <%= link_to '#', { class: 'btn btn-danger' } do %>
+    <i class="glyphicon glyphicon-trash"></i> delete
+  <% end %>
 </div>
