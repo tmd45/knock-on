@@ -2,11 +2,15 @@ require 'application_controller'
 
 class AdminController < ApplicationController
   before_action :authenticate
+  before_action :current_member
 
   # GET /admin
   #
   def index
-    # TODO いずれ分岐に
-    redirect_to admin_profile_path
+    if @member.is_administrator?
+      redirect_to admin_profile_path, notice: 'is administrator'
+    else
+      redirect_to admin_profile_path
+    end
   end
 end
