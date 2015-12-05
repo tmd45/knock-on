@@ -18,10 +18,10 @@ RSpec.describe AttendeesController, type: :controller do
         )
       end
 
-      it 'notificate @mention to slack and returns http success' do
+      it 'notificate @mention with name to slack and returns http success' do
         WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
           body: {
-            payload: "{\"text\":\"\\u003c@taro\\u003e 山田 太郎 さん 受付にお客様がお見えです。\"}"
+            payload: "{\"text\":\"\\u003c@taro\\u003e *山田 太郎* さん 受付にお客様がお見えです。\"}"
           }
         ).to_return(status: 200)
 
@@ -32,12 +32,18 @@ RSpec.describe AttendeesController, type: :controller do
     end
 
     context 'has member_id and the member has not slack_identifier' do
-      let(:member) { create(:member) }
+      let(:member) do
+        create(
+          :member,
+          family_name: '山田',
+          given_name: '太郎'
+        )
+      end
 
-      it 'notificate @here mention and returns http success' do
+      it 'notificate @here mention with name and returns http success' do
         WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
           body: {
-            payload: "{\"text\":\"\\u003c!here\\u003e 受付にお客様がお見えです。\"}"
+            payload: "{\"text\":\"\\u003c!here\\u003e *山田 太郎* さん 受付にお客様がお見えです。\"}"
           }
         ).to_return(status: 200)
 
@@ -47,7 +53,72 @@ RSpec.describe AttendeesController, type: :controller do
       end
     end
 
-    context 'has not member_id' do
+    context 'has member_id and the member has only email' do
+      let(:member) do
+        create(
+          :member,
+          family_name: nil,
+          given_name: nil,
+          email: 'ytaro@example.com'
+        )
+      end
+
+      it 'notificate @here mention with email and returns http success' do
+        WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
+          body: {
+            payload: "{\"text\":\"\\u003c!here\\u003e *ytaro@example.com* さん 受付にお客様がお見えです。\"}"
+          }
+        ).to_return(status: 200)
+
+        get :create, { member_id: member.id }
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
+      end
+    end
+
+    context 'has type of "deliver"' do
+      it 'notificate @here mention and returns http success' do
+        WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
+          body: {
+            payload: "{\"text\":\"\\u003c!here\\u003e 受付に *荷物の配達* が来ています。対応をお願いします。\"}"
+          }
+        ).to_return(status: 200)
+
+        get :create, { type: 'deliver' }
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
+      end
+    end
+
+    context 'has type of "collect"' do
+      it 'notificate @here mention and returns http success' do
+        WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
+          body: {
+            payload: "{\"text\":\"\\u003c!here\\u003e 受付に *荷物の集荷* が来ています。対応をお願いします。\"}"
+          }
+        ).to_return(status: 200)
+
+        get :create, { type: 'collect' }
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
+      end
+    end
+
+    context 'has type of "general"' do
+      it 'notificate @here mention and returns http success' do
+        WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
+          body: {
+            payload: "{\"text\":\"\\u003c!here\\u003e 総合受付にお客様がお見えです。\"}"
+          }
+        ).to_return(status: 200)
+
+        get :create, { type: 'general' }
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
+      end
+    end
+
+    context 'has not either member_id or type' do
       it 'notificate @here mention and returns http success' do
         WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
           body: {
