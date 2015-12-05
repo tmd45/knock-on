@@ -8,7 +8,7 @@ class AdminController < ApplicationController
   #
   def index
     if @member.is_administrator?
-      redirect_to admin_profile_path, notice: 'is administrator'
+      redirect_to admin_members_path
     else
       redirect_to admin_profile_path
     end

@@ -14,11 +14,11 @@
           <%= link_to 'KnockOn', root_path, { class: 'navbar-brand', 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'Go to welcome page' } %>
         </div>
         <ul class="nav navbar-nav">
-          <li>
-            <%= link_to logout_path, { 'data-toggle' => 'tooltip', 'data-placement' => 'top', 'title' => 'logout' } do %>
-              <i class="glyphicon glyphicon-log-out"></i>
-            <% end %>
-          </li>
+          <li><%= link_to 'profile', admin_profile_path %></li>
+          <% if @member.is_administrator? %>
+            <li><%= link_to 'members', admin_members_path %></li>
+            <li><%= link_to 'log', '#' %></li>
+          <% end %>
         </ul>
       </div>
     </header>
