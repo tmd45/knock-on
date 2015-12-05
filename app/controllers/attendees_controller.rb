@@ -13,10 +13,17 @@ class AttendeesController < ApplicationController
       member = Member.find(params[:member_id])
     end
 
+    # TODO 呼び出し履歴を作りたい。その場合は Attendee モデルを作る
+    # TODO 呼び出し処理自体はいずれ AttendService クラスに持ってく
     notifier = Slack::Notifier.new Settings.slack.incoming_webhook_url
     mention =
-      if member && member.slack_identifier
-        "<@#{member.slack_identifier}> #{member.family_name} #{member.given_name} さん"
+      if member
+        name = "#{member.family_name} #{member.given_name}".strip.presence || member.email
+        if member.slack_identifier
+          "<@#{member.slack_identifier}> *#{name}* さん"
+        else
+          "<!here> *#{name}* さん"
+        end
       else
         "<!here>"
       end
