@@ -76,7 +76,49 @@ RSpec.describe AttendeesController, type: :controller do
       end
     end
 
-    context 'has not member_id' do
+    context 'has type of "deliver"' do
+      it 'notificate @here mention and returns http success' do
+        WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
+          body: {
+            payload: "{\"text\":\"\\u003c!here\\u003e 受付に *荷物の配達* が来ています。対応をお願いします。\"}"
+          }
+        ).to_return(status: 200)
+
+        get :create, { type: 'deliver' }
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
+      end
+    end
+
+    context 'has type of "collect"' do
+      it 'notificate @here mention and returns http success' do
+        WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
+          body: {
+            payload: "{\"text\":\"\\u003c!here\\u003e 受付に *荷物の集荷* が来ています。対応をお願いします。\"}"
+          }
+        ).to_return(status: 200)
+
+        get :create, { type: 'collect' }
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
+      end
+    end
+
+    context 'has type of "general"' do
+      it 'notificate @here mention and returns http success' do
+        WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
+          body: {
+            payload: "{\"text\":\"\\u003c!here\\u003e 総合受付にお客様がお見えです。\"}"
+          }
+        ).to_return(status: 200)
+
+        get :create, { type: 'general' }
+        expect(response).to have_http_status :success
+        expect(response).to render_template :new
+      end
+    end
+
+    context 'has not either member_id or type' do
       it 'notificate @here mention and returns http success' do
         WebMock.stub_request(:post, 'https://www.example.com/incoming_webhook_url').with(
           body: {

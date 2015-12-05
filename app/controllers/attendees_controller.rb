@@ -34,6 +34,8 @@ class AttendeesController < ApplicationController
         "#{mention} 受付に *荷物の配達* が来ています。対応をお願いします。"
       when 'collect'
         "#{mention} 受付に *荷物の集荷* が来ています。対応をお願いします。"
+      when 'general'
+        "#{mention} 総合受付にお客様がお見えです。"
       else
         "#{mention} 受付にお客様がお見えです。"
       end
