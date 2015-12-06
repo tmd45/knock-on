@@ -49,10 +49,47 @@ RSpec.describe Admin::MembersController, type: :controller do
     context 'has logged-in' do
       include_context 'member logged-in'
 
-      it 'returns http success' do
-        subject
-        expect(response).to have_http_status(:success)
-        expect(assigns(:title)).to eq '社員情報編集'
+      context 'has member' do
+        before { @member = create(:member) }
+
+        it 'returns http success' do
+          get :edit, { id: @member.id }
+          expect(response).to have_http_status(:success)
+          expect(assigns(:title)).to eq '社員情報編集'
+        end
+      end
+    end
+  end
+
+  describe 'PATCH #update' do
+    subject { patch :update, { id: 1, member: {} } }
+    it_behaves_like 'Rejecting unknown member'
+
+    context 'has logged-in' do
+      include_context 'member logged-in'
+
+      context 'has member' do
+        before { @member = create(:member) }
+
+        let(:request_params) do
+          {
+            id: @member.id,
+            member: {
+              email: 'spec@example.com',
+              given_name: '太郎', family_name: '山田',
+              given_name_kana: 'たろう', family_name_kana: 'やまだ',
+              given_name_alphabet: 'Taro', family_name_alphabet: 'Yamada',
+              slack_identifier: 'ytaro'
+            }
+          }
+        end
+
+        it 'returns http success' do
+          expect do
+            patch :update, request_params
+          end.to change { Member.find(@member.id).updated_at }
+          expect(response).to redirect_to '/admin/members'
+        end
       end
     end
   end

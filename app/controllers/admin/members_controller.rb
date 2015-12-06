@@ -14,6 +14,15 @@ class Admin::MembersController < Admin::ApplicationController
     @title = '社員情報編集'
   end
 
+  # PATCH /admin/profile
+  def update
+    if @member.update(member_params)
+      redirect_to admin_members_path, notice: '更新しました'
+    else
+      render :edit
+    end
+  end
+
   private
 
   def set_member
