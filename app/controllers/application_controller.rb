@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   def current_member
     member_id = session[:member_id]
-    @member = Member.find(member_id)
+    @current_member = Member.find(member_id)
   rescue ActiveRecord::RecordNotFound
     reset_session
     redirect_to root_path, alert: t('omniauth.failure.unauthenticated')

@@ -8,7 +8,7 @@ class Admin::ProfileController < Admin::ApplicationController
 
   # PATCH /admin/profile
   def update
-    if @member.update(member_params)
+    if @current_member.update(member_params)
       redirect_to admin_profile_path, notice: '更新しました'
     else
       render :edit
