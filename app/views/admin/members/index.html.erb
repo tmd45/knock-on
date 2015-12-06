@@ -29,7 +29,7 @@
           <td><%= member.email %></td>
           <td><% if member.image_url %><i class="glyphicon glyphicon-ok"></i><% end %></td>
           <td><% if member.uid %><i class="glyphicon glyphicon-ok"></i><% end %></td>
-          <td><%= link_to '編集', '#', class: '' %></td>
+          <td><%= link_to '編集', edit_admin_member_path(id: member.id), class: '' %></td>
           <td><%= link_to '削除', '#', class: 'text-danger' %></td>
         </tr>
       <% end %>
