@@ -5,6 +5,7 @@ class Admin::MembersController < Admin::ApplicationController
   # GET /admin/members
   #
   def index
+    @members = Member.all.reorder(:id)
   end
 
   private

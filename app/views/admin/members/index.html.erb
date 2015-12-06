@@ -1,2 +1,38 @@
 <div class="container-fluid">
+  <div class="row">
+    <p class="text-right"><%= link_to '新規登録', '#', class: 'btn btn-info' %></p>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>所属</th>
+        <th>氏名（かな）</th>
+        <th>SlackID</th>
+        <th>Email</th>
+        <th>画像</th>
+        <th>連携済</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <th><%= member.id %></th>
+          <td><%= member.group.try(:name_kana) %></td>
+          <td>
+            <% kana = "#{member.family_name_kana} #{member.given_name_kana}".strip.presence %>
+            <%= "#{member.family_name} #{member.given_name}" %><%= "（#{kana}）" if kana %>
+          </td>
+          <td><% if member.slack_identifier %>@<%= member.slack_identifier %><% end %></td>
+          <td><%= member.email %></td>
+          <td><% if member.image_url %><i class="glyphicon glyphicon-ok"></i><% end %></td>
+          <td><% if member.uid %><i class="glyphicon glyphicon-ok"></i><% end %></td>
+          <td><%= link_to '編集', '#', class: '' %></td>
+          <td><%= link_to '削除', '#', class: 'text-danger' %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
 </div>
