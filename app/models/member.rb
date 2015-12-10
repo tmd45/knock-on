@@ -38,8 +38,4 @@ class Member < ActiveRecord::Base
       Member.all
     end
   end
-
-  def is_administrator?
-    !!self.administrator
-  end
 end

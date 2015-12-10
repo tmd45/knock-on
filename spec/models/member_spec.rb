@@ -93,27 +93,4 @@ RSpec.describe Member, type: :model do
       end
     end
   end
-
-  describe '#is_administrator?' do
-    context 'is administrator column is nil' do
-      it 'is falthy'do
-        member = create(:member)
-        expect(member.is_administrator?).to be_falsey
-      end
-    end
-
-    context 'is administrator column is false' do
-      it 'is falsey'do
-        member = create(:member, administrator: false)
-        expect(member.is_administrator?).to be_falsey
-      end
-    end
-
-    context 'is administrator column is true' do
-      it 'is truthy'do
-        member = create(:member, administrator: true)
-        expect(member.is_administrator?).to be_truthy
-      end
-    end
-  end
 end
