@@ -94,4 +94,24 @@ RSpec.describe Admin::MembersController, type: :controller do
     end
   end
 
+  describe 'DELETE #destroy' do
+    subject { delete :destroy, { id: 1 } }
+    it_behaves_like 'Rejecting unknown member'
+
+    context 'has logged-in' do
+      include_context 'member logged-in'
+
+      context 'has member' do
+        before { @member = create(:member) }
+
+        it 'destroys' do
+          expect do
+            delete :destroy, { id: @member.id }
+          end.to change { Member.count }.by(-1)
+          expect(response).to redirect_to '/admin/members'
+        end
+      end
+    end
+  end
+
 end

@@ -23,6 +23,15 @@ class Admin::MembersController < Admin::ApplicationController
     end
   end
 
+  # DELETE /admin/members/:id
+  def destroy
+    if @member.destroy
+      redirect_to admin_members_path, notice: '削除しました'
+    else
+      redirect_to admin_members_path, alert: '削除に失敗しました'
+    end
+  end
+
   private
 
   def set_member
