@@ -8,7 +8,7 @@ class Admin::ProfileController < Admin::ApplicationController
 
   # PATCH /admin/profile
   def update
-    if @member.update(member_params)
+    if @current_member.update(member_params)
       redirect_to admin_profile_path, notice: '更新しました'
     else
       render :edit
@@ -19,16 +19,5 @@ class Admin::ProfileController < Admin::ApplicationController
 
   def title
     @title = 'プロフィール編集'
-  end
-
-  def member_params
-    params.require(:member).permit(
-      :email,
-      :given_name, :family_name,
-      :given_name_kana, :family_name_kana,
-      :given_name_alphabet, :family_name_alphabet,
-      :slack_identifier,
-      :group_id, :title, :title_alphabet,
-    )
   end
 end

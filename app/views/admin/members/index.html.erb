@@ -1,0 +1,61 @@
+<div class="container-fluid">
+  <div class="row">
+    <p class="text-right"><%= link_to '新規登録', '#', class: 'btn btn-info' %></p>
+  </div>
+  <table class="table table-hover">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>所属</th>
+        <th>氏名（かな）</th>
+        <th>SlackID</th>
+        <th>Email</th>
+        <th>画像</th>
+        <th>連携済</th>
+        <th></th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <th><%= member.id %></th>
+          <td><%= member.group.try(:name_kana) %></td>
+          <td>
+            <% kana = "#{member.family_name_kana} #{member.given_name_kana}".strip.presence %>
+            <%= "#{member.family_name} #{member.given_name}" %><%= "（#{kana}）" if kana %>
+          </td>
+          <td><% if member.slack_identifier %>@<%= member.slack_identifier %><% end %></td>
+          <td><%= member.email %></td>
+          <td><% if member.image_url %><i class="glyphicon glyphicon-ok"></i><% end %></td>
+          <td><% if member.uid %><i class="glyphicon glyphicon-ok"></i><% end %></td>
+          <td><%= link_to '編集', edit_admin_member_path(id: member.id), class: '' %></td>
+          <td>
+            <% unless member.administrator? %>
+              <%= link_to '削除', '#', class: 'text-danger', 'data-toggle' => 'modal', 'data-target' => "#confirmDeleteMember#{member.id}" %>
+              <div class="modal fade" id="confirmDeleteMember<%= member.id %>" tabindex="-1" role="dialog" aria-labelledby="dialogHeader" area-hidden="true">
+                <div class="modal-dialog">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                      <h4 class="modal-title">&nbsp;</h4>
+                    </div>
+                    <div class="modal-body">
+                      <p><%= "#{member.family_name} #{member.given_name}" %> さんを削除してよろしいですか？</p>
+                    </div>
+                    <div class="modal-footer">
+                      <%= form_tag(admin_member_path(id: member.id), method: :delete, id: "deleteMember#{member.id}") do%>
+                        <button type="button" class="btn btn-default btn-lg" data-dismiss="modal">キャンセル</button>
+                        <%= button_tag '削除する', class: 'btn btn-danger btn-lg', data: { disable_with: 'Sending...' }, form: "deleteMember#{member.id}" %>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
