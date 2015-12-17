@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151205091939) do
+ActiveRecord::Schema.define(version: 20151217110120) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,8 +27,8 @@ ActiveRecord::Schema.define(version: 20151205091939) do
   add_index "groups", ["order"], name: "idx_groups_order", using: :btree
 
   create_table "members", force: :cascade do |t|
-    t.string   "provider",             null: false
-    t.string   "uid",                  null: false
+    t.string   "provider"
+    t.string   "uid"
     t.string   "email",                null: false
     t.string   "given_name"
     t.string   "given_name_kana"
