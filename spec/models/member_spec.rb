@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Member, type: :model do
   describe 'validation' do
-    describe '#provider' do
-      it { should validate_presence_of(:provider) }
-    end
-
     describe '#uid' do
-      it { should validate_presence_of(:uid) }
       it 'should require unique value for uid scoped to provider' do
         create(:member, provider: 'google', uid: '10000567890')
         expect(build(:member, provider: 'google',  uid: '10000567890')).to be_invalid

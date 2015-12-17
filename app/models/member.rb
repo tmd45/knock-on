@@ -1,8 +1,8 @@
 class Member < ActiveRecord::Base
   belongs_to :group
 
-  validates_presence_of :provider, :uid, :email
-  validates_uniqueness_of :uid, scope: :provider
+  validates_presence_of :email
+  validates_uniqueness_of :uid, scope: :provider, allow_blank: true
   validates_uniqueness_of :email
 
   default_scope { order(:family_name_kana, :family_name, :email) }
