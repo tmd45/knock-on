@@ -15,6 +15,16 @@ class Admin::MembersController < Admin::ApplicationController
     @member = Member.new
   end
 
+  # POST /admin/members
+  def create
+    @member = Member.new(member_params)
+    if @member.save
+      redirect_to edit_admin_member_path(id: @member.id), notice: '作成しました'
+    else
+      render :new
+    end
+  end
+
   # GET /admin/members/:id/edit
   def edit
     @title = '社員情報編集'
