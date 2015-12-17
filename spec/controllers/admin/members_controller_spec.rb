@@ -42,6 +42,21 @@ RSpec.describe Admin::MembersController, type: :controller do
     end
   end
 
+  describe 'GET #new' do
+    subject { get :new }
+    it_behaves_like 'Rejecting unknown member'
+
+    context 'has logged-in' do
+      include_context 'member logged-in'
+
+      it 'returns http success' do
+        subject
+        expect(response).to have_http_status(:success)
+        expect(assigns(:title)).to eq '社員新規登録'
+      end
+    end
+  end
+
   describe 'GET #edit' do
     subject { get :edit, { id: 1 } }
     it_behaves_like 'Rejecting unknown member'

@@ -9,6 +9,12 @@ class Admin::MembersController < Admin::ApplicationController
     @members = Member.all.reorder(:id)
   end
 
+  # GET /admin/members/new
+  def new
+    @title = '社員新規登録'
+    @member = Member.new
+  end
+
   # GET /admin/members/:id/edit
   def edit
     @title = '社員情報編集'
