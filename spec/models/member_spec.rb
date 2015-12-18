@@ -30,7 +30,7 @@ RSpec.describe Member, type: :model do
     end
 
     context 'has no member' do
-      it 'return create member' do
+      it 'returns create member' do
         member = nil
         expect {
           member = Member.find_or_create_from_auth_hash(auth_hash)
@@ -41,10 +41,37 @@ RSpec.describe Member, type: :model do
       end
     end
 
-    context 'has member already' do
-      before { @member = create(:member, provider: 'google', uid: '1000067890') }
+    context 'has member already associated google' do
+      before do
+        @member = create(
+          :member,
+          provider: 'google', uid: '1000067890',
+          email: 'hanako@example.com'
+        )
+      end
 
-      it 'return find member' do
+      it 'returns find member' do
+        member = nil
+        expect {
+          member = Member.find_or_create_from_auth_hash(auth_hash)
+        }.to_not change{ Member.count }
+        expect(member).to be_persisted
+        expect(member.id).to eq @member.id
+        expect(member.provider).to eq 'google'
+        expect(member.uid).to eq '1000067890'
+      end
+    end
+
+    context 'has member already created by admin' do
+      before do
+        @member = create(
+          :member,
+          provider: nil, uid: nil,
+          email: 'hanako@example.com'
+        )
+      end
+
+      it 'returns update member' do
         member = nil
         expect {
           member = Member.find_or_create_from_auth_hash(auth_hash)
