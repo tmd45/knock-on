@@ -2,12 +2,7 @@ require 'rails_helper'
 
 RSpec.describe Member, type: :model do
   describe 'validation' do
-    describe '#provider' do
-      it { should validate_presence_of(:provider) }
-    end
-
     describe '#uid' do
-      it { should validate_presence_of(:uid) }
       it 'should require unique value for uid scoped to provider' do
         create(:member, provider: 'google', uid: '10000567890')
         expect(build(:member, provider: 'google',  uid: '10000567890')).to be_invalid
@@ -35,7 +30,7 @@ RSpec.describe Member, type: :model do
     end
 
     context 'has no member' do
-      it 'return create member' do
+      it 'returns create member' do
         member = nil
         expect {
           member = Member.find_or_create_from_auth_hash(auth_hash)
@@ -46,10 +41,37 @@ RSpec.describe Member, type: :model do
       end
     end
 
-    context 'has member already' do
-      before { @member = create(:member, provider: 'google', uid: '1000067890') }
+    context 'has member already associated google' do
+      before do
+        @member = create(
+          :member,
+          provider: 'google', uid: '1000067890',
+          email: 'hanako@example.com'
+        )
+      end
 
-      it 'return find member' do
+      it 'returns find member' do
+        member = nil
+        expect {
+          member = Member.find_or_create_from_auth_hash(auth_hash)
+        }.to_not change{ Member.count }
+        expect(member).to be_persisted
+        expect(member.id).to eq @member.id
+        expect(member.provider).to eq 'google'
+        expect(member.uid).to eq '1000067890'
+      end
+    end
+
+    context 'has member already created by admin' do
+      before do
+        @member = create(
+          :member,
+          provider: nil, uid: nil,
+          email: 'hanako@example.com'
+        )
+      end
+
+      it 'returns update member' do
         member = nil
         expect {
           member = Member.find_or_create_from_auth_hash(auth_hash)

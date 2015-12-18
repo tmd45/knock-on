@@ -42,6 +42,50 @@ RSpec.describe Admin::MembersController, type: :controller do
     end
   end
 
+  describe 'GET #new' do
+    subject { get :new }
+    it_behaves_like 'Rejecting unknown member'
+
+    context 'has logged-in' do
+      include_context 'member logged-in'
+
+      it 'returns http success' do
+        subject
+        expect(response).to have_http_status(:success)
+        expect(assigns(:title)).to eq '社員新規登録'
+      end
+    end
+  end
+
+  describe 'POST #create' do
+    subject { post :create, { member: {} } }
+    it_behaves_like 'Rejecting unknown member'
+
+    context 'has logged-in' do
+      include_context 'member logged-in'
+
+      let(:request_params) do
+        {
+          member: {
+            email: 'spec@example.com',
+            given_name: '太郎', family_name: '山田',
+            given_name_kana: 'たろう', family_name_kana: 'やまだ',
+            given_name_alphabet: 'Taro', family_name_alphabet: 'Yamada',
+            slack_identifier: 'ytaro'
+          }
+        }
+      end
+
+      it 'returns http success' do
+        expect do
+          post :create, request_params
+        end.to change { Member.count }.by(1)
+        # NOTE: default_scope よくないな… > reorder(nil)
+        expect(response).to redirect_to "/admin/members/#{Member.reorder(nil).last.id}/edit"
+      end
+    end
+  end
+
   describe 'GET #edit' do
     subject { get :edit, { id: 1 } }
     it_behaves_like 'Rejecting unknown member'
