@@ -22,13 +22,13 @@ else
 fi
 
 #
-# Check for Bower
+# Check for Yarn
 #
-if [ ! $(which bower) ]; then
-  echo "  x You need to install Bower:"
-  echo "    npm install -g bower"
+if [ ! $(which yarn) ]; then
+  echo "  x You need to install Yarn:"
+  echo "    npm install -g yarn"
 else
-  echo "  + Bower found."
+  echo "  + Yarn found."
 fi
 
 #
@@ -59,13 +59,13 @@ echo "\n\x1b[34;1m==> \x1b[0m\x1b[37;1mInstalling\x1b[0m"
 echo "  + Install ruby gems"
 bundle install --path vendor/bundle --binstubs vendor/bundle/bin --without production --jobs=2 --retry=3 --quiet
 
-echo "  + Install bower components"
-bower install
+echo "  + Install node modules"
+yarn install
 
 echo "  + Copy fonts to public/fonts"
-cp vendor/assets/bower_components/bootstrap/fonts/glyphicons-halflings-regular.* public/fonts
-cp vendor/assets/bower_components/bootstrap-material-design/fonts/Material-Design-Icons.* public/fonts
-cp vendor/assets/bower_components/bootstrap-material-design/fonts/RobotoDraft*.* public/fonts
+cp node_modules/bootstrap/fonts/glyphicons-halflings-regular.* public/fonts
+cp node_modules/bootstrap-material-design/fonts/Material-Design-Icons.* public/fonts
+cp node_modules/bootstrap-material-design/fonts/RobotoDraft*.* public/fonts
 
 echo "  + Create PostgreSQL databases"
 if ( psql -l | fgrep -q knock_on_development ); then
