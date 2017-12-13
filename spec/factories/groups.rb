@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :group do
     sequence(:name) { |i| "group#{i}" }
     sequence(:name_kana) { |i| "グループ #{i}" }
