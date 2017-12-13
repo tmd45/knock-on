@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :member do
     provider 'google'
     sequence(:uid) { |i| "#{1000067890 + i}" }

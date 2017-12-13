@@ -22,8 +22,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 
 gem 'dotenv-rails', '~> 2.0.2'
-gem 'omniauth', '~> 1.2.2'
-gem 'omniauth-google-oauth2', '~> 0.2.9'
+gem 'omniauth', '~> 1.7.1'
+gem 'omniauth-google-oauth2', '~> 0.5.2'
 gem 'rails_config', '~> 0.4.2'
 gem 'slack-notifier', '~> 1.4.0'
 
@@ -55,7 +55,7 @@ group :development, :test do
   gem 'binding_of_caller'
   gem 'rails-erd'
 
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 

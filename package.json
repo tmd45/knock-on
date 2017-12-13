@@ -1,0 +1,20 @@
+{
+  "name": "knock-on",
+  "version": "0.1.0",
+  "description": "KnockOn the office door.",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/tmd45/knock-on.git"
+  },
+  "author": "tmd45",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/tmd45/knock-on/issues"
+  },
+  "homepage": "https://github.com/tmd45/knock-on#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "bootstrap-material-design": "^0.3.0"
+  }
+}
